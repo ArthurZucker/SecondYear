@@ -1,0 +1,17 @@
+/*
+ * Papier.h
+ *
+ *  Created on: 25 sept. 2019
+ *      Author: 3670958
+ */
+
+#ifndef HEADERS_PAPIER_H_
+#define HEADERS_PAPIER_H_
+class Papier : public Document{
+
+};
+
+
+
+
+#endif /* HEADERS_PAPIER_H_ */

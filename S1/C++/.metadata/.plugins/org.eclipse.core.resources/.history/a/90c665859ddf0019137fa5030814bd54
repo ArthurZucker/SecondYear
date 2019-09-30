@@ -1,0 +1,37 @@
+#include "../Headers/bibli.h"
+using namespace std;
+
+
+const vector<Adherent>& bibli::getListAdherents() const {
+	return list_adherents;
+}
+
+
+const vector<Document>& bibli::getListDocuments() const {
+	return list_documents;
+}
+const string& bibli::getNom() const {
+	return nom;
+}
+
+bibli::bibli(string allocator) {
+}
+
+int bibli::add_doc(Document document) {
+}
+
+int bibli::add_adhe(Adherent adherent) {
+}
+
+void bibli::afficher() {
+}
+
+void bibli::afficher_adhe() {
+}
+
+void bibli::afficher_doc() {
+}
+
+void bibli::setNom(const string& nom) {
+	this->nom = nom;
+}

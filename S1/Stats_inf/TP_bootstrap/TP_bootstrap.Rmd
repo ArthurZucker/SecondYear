@@ -1,0 +1,104 @@
+---
+title: "TP_booststrap"
+author: "Arthur"
+date: "30 septembre 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Exercice 1
+Cet exercice sert de rappel. 
+```{r}
+MC.simus <- function(theta, n,Nsim)
+{ sortie =rep(NA, Nsim)
+  for (nsim in 1:Nsim)
+       {  x=rbinom(n, 1, theta)
+          sortie[nsim]=mean(x)
+        }
+return(sortie)
+}
+
+n=100
+Nsim=1000
+theta=0.5
+theta.chap=MC.simus(theta,n, Nsim)
+
+par(mfrow=c(1,2))
+hist(theta.chap,prob=1)
+xx= seq(0,1,by=0.01)
+lines(xx, dnorm(xx, theta, sqrt(theta*(1-theta)/n)), col=2)
+
+plot(density(theta.chap))
+xx= seq(0,1,by=0.01)
+lines(xx, dnorm(xx, theta, sqrt(theta*(1-theta)/n)), col=2)
+```
+
+# Exercice 2
+
+```{r}
+n=100
+theta=0.5
+set.seed(1)        #fixe l'aléa : vous aurez tous le même jeu de données
+x=rbinom(n,1,theta)
+
+theta.chap=...
+
+# Q.2a)
+
+
+# Q.2b)
+mean.bootstrap <- function(x, B)
+{ ech_boot_mean =rep(NA,B)
+  n=length(x)
+  for (b in 1:B)
+  { xstar=...
+    ech_boot_mean[b]=...  } 
+  return(ech_boot_mean)
+}
+ech_boot_mean=mean.bootstrap(x, B=1000)
+
+
+# Q.2c)
+library(boot)
+moyenne <- function(x,i) {return(mean(x[i]))}
+bootsample_mean=boot(x,moyenne,R=1000)
+names(bootsample_mean)
+
+
+
+# Q.3a)
+par(mfrow=c(1,2))
+hist(bootsample_mean$t)
+plot(density(bootsample_mean$t))
+
+
+# Q.3b)
+
+
+# Q.3c)
+plot(density(sqrt(n)*(bootsample_mean$t-mean(x))))
+xx= seq(-2,2,by=0.01)
+lines(xx, dnorm(xx,0,sqrt(theta*(1-theta))), col=2)
+
+
+#Q.4)
+quantile(bootsample_mean$t, c(0.025,0.975)) 
+ 
+ICboot_perc<-boot.ci( bootsample_mean,conf=0.95,type="perc")
+ICboot_perc
+ 
+ICboot_bca <-boot.ci(bootsample_mean,conf=0.95,type="bca")
+ICboot_bca
+
+
+#D'apres TCL :
+Binf=mean(x)-1.96*sd(x)/sqrt(n)
+Bsup=mean(x)+1.96*sd(x)/sqrt(n)
+Binf
+Bsup
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

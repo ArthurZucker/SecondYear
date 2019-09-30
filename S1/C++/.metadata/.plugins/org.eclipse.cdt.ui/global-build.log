@@ -1,0 +1,1687 @@
+15:41:45 **** Clean-only build of configuration Debug for project TP1 ****
+make clean 
+rm -rf  ./source/bibli.o ./source/document.o  ./main.o  ./source/bibli.d ./source/document.d  ./main.d  TP1
+ 
+15:41:45 **** Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp:1:22: fatal error: adherent.h: No such file or directory
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+compilation terminated.
+make: *** [source/adherent.o] Error 1
+15:42:01 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/adherent.cpp
+ 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+Finished building: ../source/bibli.cpp
+ 
+Building file: ../source/document.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/document.d" -MT"source/document.d" -o "source/document.o" "../source/document.cpp"
+Finished building: ../source/document.cpp
+ 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+./source/adherent.o: In function `Adherent::Adherent(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+/nfs/home/sasl/eleves/main/3670958/Polytech/MAIN4/S1/C++/TP1/Debug/../source/adherent.cpp:3: undefined reference to `vtable for Adherent'
+collect2: error: ld returned 1 exit status
+makefile:45: recipe for target 'TP1' failed
+make: *** [TP1] Error 1
+15:42:15 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/adherent.cpp
+ 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+Finished building: ../source/bibli.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+15:46:12 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/adherent.cpp
+ 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+Finished building: ../source/bibli.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+./source/adherent.o: In function `operator<<(std::ostream&, Adherent const&)':
+/nfs/home/sasl/eleves/main/3670958/Polytech/MAIN4/S1/C++/TP1/Debug/../source/adherent.cpp:35: undefined reference to `Adherent::out(std::ostream&) const'
+collect2: error: ld returned 1 exit status
+makefile:45: recipe for target 'TP1' failed
+make: *** [TP1] Error 1
+15:47:04 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:23:44: error: non-member function ‘std::ostream& out(std::ostream&)’ cannot have cv-qualifier
+   friend ostream & out( std::ostream &os ) const;
+                                            ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/adherent.cpp:35:24: error: ‘const class Adherent’ has no member named ‘out’
+      return ( Adherent.out( os ) );
+                        ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:52:22 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:23:44: error: non-member function ‘std::ostream& out(std::ostream&)’ cannot have cv-qualifier
+   friend ostream & out( std::ostream &os ) const;
+                                            ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme"
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme"
+                                                         ^
+../source/adherent.cpp:36:6: error: expected ‘;’ before ‘return’
+      return ( os ) ;
+      ^
+../source/adherent.cpp:37:2: warning: no return statement in function returning non-void [-Wreturn-type]
+  }
+  ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:52:33 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:23:44: error: non-member function ‘std::ostream& out(std::ostream&)’ cannot have cv-qualifier
+   friend ostream & out( std::ostream &os ) const;
+                                            ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                                                         ^
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+make: *** [source/adherent.o] Error 1
+15:53:07 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                                                         ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:53:32 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:23:50: error: ‘std::ostream& operator<<(std::ostream&)’ must take exactly two arguments
+   friend ostream & operator <<( std::ostream &os ) ;
+                                                  ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                                                         ^
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+make: *** [source/adherent.o] Error 1
+15:53:56 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                                                         ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:54:08 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                                                         ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:54:20 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: At global scope:
+../source/adherent.cpp:33:1: error: ‘friend’ used outside of class
+ friend ostream & operator<<( ostream &os, const Adherent &Adherent )
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                                                         ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:54:48 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: At global scope:
+../source/adherent.cpp:33:1: error: ‘friend’ used outside of class
+ friend ostream & operator<<( ostream &os, const Adherent &Adherent )
+ ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h: In function ‘std::ostream& operator<<(std::ostream&, const Adherent&)’:
+../source/../Headers/adherent.h:10:17: error: ‘std::__cxx11::string Adherent::nom’ is private
+   string prenom,nom;
+                 ^
+../source/adherent.cpp:35:27: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                           ^
+In file included from ../source/adherent.cpp:1:0:
+../source/../Headers/adherent.h:10:10: error: ‘std::__cxx11::string Adherent::prenom’ is private
+   string prenom,nom;
+          ^
+../source/adherent.cpp:35:57: error: within this context
+  os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+                                                         ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:55:33 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: At global scope:
+../source/adherent.cpp:33:72: error: ‘std::ostream& Adherent::operator<<(std::ostream&, const Adherent&)’ must take exactly one argument
+ ostream & Adherent:: operator<<( ostream &os, const Adherent &Adherent )
+                                                                        ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:56:47 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: At global scope:
+../source/adherent.cpp:33:71: error: ‘std::ostream& Adherent::operator<<(std::ostream&, const Adherent&)’ must take exactly one argument
+ ostream & Adherent:: operator<<( ostream &os, const Adherent &Adherent)
+                                                                       ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+15:57:09 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: At global scope:
+../source/adherent.cpp:33:70: error: ‘std::ostream& Adherent::operator<<(std::ostream&, const Adherent&)’ must take exactly one argument
+ ostream & Adherent::operator<<( ostream &os, const Adherent &Adherent)
+                                                                      ^
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+make: *** [source/adherent.o] Error 1
+15:57:55 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: At global scope:
+../source/adherent.cpp:33:70: error: ‘std::ostream& Adherent::operator<<(std::ostream&, const Adherent&)’ must take exactly one argument
+ ostream & Adherent::operator<<( ostream &os, const Adherent &Adherent)
+                                                                      ^
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+make: *** [source/adherent.o] Error 1
+15:59:19 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:19:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(Document)’:
+../source/adherent.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::emprunter(std::__cxx11::string)’:
+../source/adherent.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(Document)’:
+../source/adherent.cpp:28:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘bool Adherent::rendre(std::__cxx11::string)’:
+../source/adherent.cpp:31:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/adherent.cpp
+ 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+Finished building: ../source/bibli.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:01:20 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::vector<Document> Adherent::get_doc()’:
+../source/adherent.cpp:20:1: error: expected ‘;’ before ‘}’ token
+ }
+ ^
+make: *** [source/adherent.o] Error 1
+source/subdir.mk:24: recipe for target 'source/adherent.o' failed
+16:01:25 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_nom()’:
+../source/adherent.cpp:7:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/adherent.cpp: In member function ‘std::__cxx11::string Adherent::get_prenom()’:
+../source/adherent.cpp:10:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/adherent.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:01:48 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+Finished building: ../source/adherent.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:02:49 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+Finished building: ../source/adherent.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:05:41 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+../source/bibli.cpp: In member function ‘int bibli::add_doc(Document)’:
+../source/bibli.cpp:21:27: error: ‘documents’ was not declared in this scope
+  list_documents.push_back(documents);
+                           ^
+../source/bibli.cpp:22:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../source/bibli.cpp: In member function ‘int bibli::add_adhe(Adherent)’:
+../source/bibli.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:24: recipe for target 'source/bibli.o' failed
+16:06:03 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+../source/bibli.cpp: In member function ‘int bibli::add_adhe(Adherent)’:
+../source/bibli.cpp:26:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../source/../Headers/adherent.h:6:0,
+                 from ../source/../Headers/bibli.h:6,
+                 from ../source/bibli.cpp:1:
+../source/../Headers/document.h: In instantiation of ‘void std::vector<_Tp, _Alloc>::_M_insert_aux(std::vector<_Tp, _Alloc>::iterator, const _Tp&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::iterator = __gnu_cxx::__normal_iterator<Document*, std::vector<Document> >; typename std::_Vector_base<_Tp, _Alloc>::pointer = Document*]’:
+/usr/include/c++/5/bits/stl_vector.h:925:17:   required from ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::value_type = Document]’
+../source/bibli.cpp:21:35:   required from here
+../source/../Headers/document.h:8:7: error: non-static const member ‘const int Document::duree_emprunt’, can’t use default assignment operator
+ class Document {
+       ^
+../source/../Headers/document.h:8:7: error: non-static const member ‘const bool Document::prolongeable’, can’t use default assignment operator
+In file included from /usr/include/c++/5/vector:69:0,
+                 from ../source/../Headers/bibli.h:5,
+                 from ../source/bibli.cpp:1:
+/usr/include/c++/5/bits/vector.tcc:343:16: note: synthesized method ‘Document& Document::operator=(const Document&)’ first required here 
+    *__position = __x_copy;
+                ^
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:24: recipe for target 'source/bibli.o' failed
+16:06:31 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+../source/bibli.cpp: In member function ‘int bibli::add_adhe(Adherent)’:
+../source/bibli.cpp:26:2: error: ‘list_adherent’ was not declared in this scope
+  list_adherent.push_back(adherent);
+  ^
+In file included from ../source/../Headers/adherent.h:6:0,
+                 from ../source/../Headers/bibli.h:6,
+                 from ../source/bibli.cpp:1:
+../source/../Headers/document.h: In instantiation of ‘void std::vector<_Tp, _Alloc>::_M_insert_aux(std::vector<_Tp, _Alloc>::iterator, const _Tp&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::iterator = __gnu_cxx::__normal_iterator<Document*, std::vector<Document> >; typename std::_Vector_base<_Tp, _Alloc>::pointer = Document*]’:
+/usr/include/c++/5/bits/stl_vector.h:925:17:   required from ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::value_type = Document]’
+../source/bibli.cpp:21:35:   required from here
+../source/../Headers/document.h:8:7: error: non-static const member ‘const int Document::duree_emprunt’, can’t use default assignment operator
+ class Document {
+       ^
+../source/../Headers/document.h:8:7: error: non-static const member ‘const bool Document::prolongeable’, can’t use default assignment operator
+In file included from /usr/include/c++/5/vector:69:0,
+                 from ../source/../Headers/bibli.h:5,
+                 from ../source/bibli.cpp:1:
+/usr/include/c++/5/bits/vector.tcc:343:16: note: synthesized method ‘Document& Document::operator=(const Document&)’ first required here 
+    *__position = __x_copy;
+                ^
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:24: recipe for target 'source/bibli.o' failed
+16:06:40 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+In file included from ../source/../Headers/adherent.h:6:0,
+                 from ../source/../Headers/bibli.h:6,
+                 from ../source/bibli.cpp:1:
+../source/../Headers/document.h: In instantiation of ‘void std::vector<_Tp, _Alloc>::_M_insert_aux(std::vector<_Tp, _Alloc>::iterator, const _Tp&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::iterator = __gnu_cxx::__normal_iterator<Document*, std::vector<Document> >; typename std::_Vector_base<_Tp, _Alloc>::pointer = Document*]’:
+/usr/include/c++/5/bits/stl_vector.h:925:17:   required from ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::value_type = Document]’
+../source/bibli.cpp:21:35:   required from here
+../source/../Headers/document.h:8:7: error: non-static const member ‘const int Document::duree_emprunt’, can’t use default assignment operator
+ class Document {
+       ^
+../source/../Headers/document.h:8:7: error: non-static const member ‘const bool Document::prolongeable’, can’t use default assignment operator
+In file included from /usr/include/c++/5/vector:69:0,
+                 from ../source/../Headers/bibli.h:5,
+                 from ../source/bibli.cpp:1:
+/usr/include/c++/5/bits/vector.tcc:343:16: note: synthesized method ‘Document& Document::operator=(const Document&)’ first required here 
+    *__position = __x_copy;
+                ^
+source/subdir.mk:24: recipe for target 'source/bibli.o' failed
+make: *** [source/bibli.o] Error 1
+16:08:28 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+In file included from ../source/../Headers/adherent.h:6:0,
+                 from ../source/../Headers/bibli.h:6,
+                 from ../source/bibli.cpp:1:
+../source/../Headers/document.h: In instantiation of ‘void std::vector<_Tp, _Alloc>::_M_insert_aux(std::vector<_Tp, _Alloc>::iterator, const _Tp&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::iterator = __gnu_cxx::__normal_iterator<Document*, std::vector<Document> >; typename std::_Vector_base<_Tp, _Alloc>::pointer = Document*]’:
+/usr/include/c++/5/bits/stl_vector.h:925:17:   required from ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::value_type = Document]’
+../source/bibli.cpp:21:35:   required from here
+../source/../Headers/document.h:8:7: error: non-static const member ‘const int Document::duree_emprunt’, can’t use default assignment operator
+ class Document {
+       ^
+../source/../Headers/document.h:8:7: error: non-static const member ‘const bool Document::prolongeable’, can’t use default assignment operator
+In file included from /usr/include/c++/5/vector:69:0,
+                 from ../source/../Headers/bibli.h:5,
+                 from ../source/bibli.cpp:1:
+/usr/include/c++/5/bits/vector.tcc:343:16: note: synthesized method ‘Document& Document::operator=(const Document&)’ first required here 
+    *__position = __x_copy;
+                ^
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:24: recipe for target 'source/bibli.o' failed
+16:17:12 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numerique.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numerique.d" -MT"source/Numerique.d" -o "source/Numerique.o" "../source/Numerique.cpp"
+../source/Numerique.cpp:7:23: fatal error: Numerique.h: No such file or directory
+compilation terminated.
+source/subdir.mk:30: recipe for target 'source/Numerique.o' failed
+make: *** [source/Numerique.o] Error 1
+16:17:56 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+Finished building: ../source/Numeric.cpp
+ 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+../source/Papier.cpp:1:20: fatal error: Papier.h: No such file or directory
+compilation terminated.
+make: *** [source/Papier.o] Error 1
+source/subdir.mk:30: recipe for target 'source/Papier.o' failed
+16:18:11 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+Finished building: ../source/Papier.cpp
+ 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+In file included from ../source/../Headers/adherent.h:6:0,
+                 from ../source/../Headers/bibli.h:6,
+                 from ../source/bibli.cpp:1:
+../source/../Headers/document.h: In instantiation of ‘void std::vector<_Tp, _Alloc>::_M_insert_aux(std::vector<_Tp, _Alloc>::iterator, const _Tp&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::iterator = __gnu_cxx::__normal_iterator<Document*, std::vector<Document> >; typename std::_Vector_base<_Tp, _Alloc>::pointer = Document*]’:
+/usr/include/c++/5/bits/stl_vector.h:925:17:   required from ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Document; _Alloc = std::allocator<Document>; std::vector<_Tp, _Alloc>::value_type = Document]’
+../source/bibli.cpp:21:35:   required from here
+../source/../Headers/document.h:8:7: error: non-static const member ‘const int Document::duree_emprunt’, can’t use default assignment operator
+ class Document {
+       ^
+../source/../Headers/document.h:8:7: error: non-static const member ‘const bool Document::prolongeable’, can’t use default assignment operator
+In file included from /usr/include/c++/5/vector:69:0,
+                 from ../source/../Headers/bibli.h:5,
+                 from ../source/bibli.cpp:1:
+/usr/include/c++/5/bits/vector.tcc:343:16: note: synthesized method ‘Document& Document::operator=(const Document&)’ first required here 
+    *__position = __x_copy;
+                ^
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:30: recipe for target 'source/bibli.o' failed
+16:21:25 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+../source/bibli.cpp:5:25: error: prototype for ‘const std::vector<Adherent>& bibli::getListAdherents() const’ does not match any in class ‘bibli’
+ const vector<Adherent>& bibli::getListAdherents() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:30:27: error: candidate is: const std::vector<Adherent*>& bibli::getListAdherents() const
+  const vector<Adherent*>& getListAdherents() const;
+                           ^
+../source/bibli.cpp:10:25: error: prototype for ‘const std::vector<Document>& bibli::getListDocuments() const’ does not match any in class ‘bibli’
+ const vector<Document>& bibli::getListDocuments() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:31:27: error: candidate is: const std::vector<Document*>& bibli::getListDocuments() const
+  const vector<Document*>& getListDocuments() const;
+                           ^
+../source/bibli.cpp:20:5: error: prototype for ‘int bibli::add_doc(Document*)’ does not match any in class ‘bibli’
+ int bibli::add_doc(Document* document) {
+     ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:20:6: error: candidate is: int bibli::add_doc(Document&)
+  int add_doc(Document&);
+      ^
+../source/bibli.cpp: In member function ‘int bibli::add_adhe(Adherent&)’:
+../source/bibli.cpp:26:35: error: no matching function for call to ‘std::vector<Adherent*>::push_back(Adherent&)’
+  list_adherents.push_back(adherent);
+                                   ^
+In file included from /usr/include/c++/5/vector:64:0,
+                 from ../source/../Headers/bibli.h:5,
+                 from ../source/bibli.cpp:1:
+/usr/include/c++/5/bits/stl_vector.h:913:7: note: candidate: void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Adherent*; _Alloc = std::allocator<Adherent*>; std::vector<_Tp, _Alloc>::value_type = Adherent*]
+       push_back(const value_type& __x)
+       ^
+/usr/include/c++/5/bits/stl_vector.h:913:7: note:   no known conversion for argument 1 from ‘Adherent’ to ‘Adherent* const&’
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:30: recipe for target 'source/bibli.o' failed
+16:22:49 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+../source/bibli.cpp:5:25: error: prototype for ‘const std::vector<Adherent>& bibli::getListAdherents() const’ does not match any in class ‘bibli’
+ const vector<Adherent>& bibli::getListAdherents() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:30:27: error: candidate is: const std::vector<Adherent*>& bibli::getListAdherents() const
+  const vector<Adherent*>& getListAdherents() const;
+                           ^
+../source/bibli.cpp:10:25: error: prototype for ‘const std::vector<Document>& bibli::getListDocuments() const’ does not match any in class ‘bibli’
+ const vector<Document>& bibli::getListDocuments() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:31:27: error: candidate is: const std::vector<Document*>& bibli::getListDocuments() const
+  const vector<Document*>& getListDocuments() const;
+                           ^
+../source/bibli.cpp:25:5: error: prototype for ‘int bibli::add_adhe(Adherent&)’ does not match any in class ‘bibli’
+ int bibli::add_adhe(Adherent &adherent) {
+     ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:21:6: error: candidate is: int bibli::add_adhe(Adherent*)
+  int add_adhe(Adherent*);
+      ^
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:30: recipe for target 'source/bibli.o' failed
+16:23:01 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+../source/bibli.cpp:5:25: error: prototype for ‘const std::vector<Adherent>& bibli::getListAdherents() const’ does not match any in class ‘bibli’
+ const vector<Adherent>& bibli::getListAdherents() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:30:27: error: candidate is: const std::vector<Adherent*>& bibli::getListAdherents() const
+  const vector<Adherent*>& getListAdherents() const;
+                           ^
+../source/bibli.cpp:10:25: error: prototype for ‘const std::vector<Document>& bibli::getListDocuments() const’ does not match any in class ‘bibli’
+ const vector<Document>& bibli::getListDocuments() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:31:27: error: candidate is: const std::vector<Document*>& bibli::getListDocuments() const
+  const vector<Document*>& getListDocuments() const;
+                           ^
+../source/bibli.cpp:25:5: error: prototype for ‘int bibli::add_adhe(Adherent&)’ does not match any in class ‘bibli’
+ int bibli::add_adhe(Adherent &adherent) {
+     ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:21:6: error: candidate is: int bibli::add_adhe(Adherent*)
+  int add_adhe(Adherent*);
+      ^
+source/subdir.mk:30: recipe for target 'source/bibli.o' failed
+make: *** [source/bibli.o] Error 1
+16:23:18 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+../source/bibli.cpp:5:25: error: prototype for ‘const std::vector<Adherent>& bibli::getListAdherents() const’ does not match any in class ‘bibli’
+ const vector<Adherent>& bibli::getListAdherents() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:30:27: error: candidate is: const std::vector<Adherent*>& bibli::getListAdherents() const
+  const vector<Adherent*>& getListAdherents() const;
+                           ^
+../source/bibli.cpp:10:25: error: prototype for ‘const std::vector<Document>& bibli::getListDocuments() const’ does not match any in class ‘bibli’
+ const vector<Document>& bibli::getListDocuments() const {
+                         ^
+In file included from ../source/bibli.cpp:1:0:
+../source/../Headers/bibli.h:31:27: error: candidate is: const std::vector<Document*>& bibli::getListDocuments() const
+  const vector<Document*>& getListDocuments() const;
+                           ^
+make: *** [source/bibli.o] Error 1
+source/subdir.mk:30: recipe for target 'source/bibli.o' failed
+16:23:48 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+Finished building: ../source/bibli.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Numeric.o ./source/Papier.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:29:23 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+Finished building: ../source/Papier.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Numeric.o ./source/Papier.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:31:37 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+../source/Papier.cpp: In constructor ‘Papier::Papier()’:
+../source/Papier.cpp:15:16: error: no matching function for call to ‘Document::Document()’
+ Papier::Papier() {
+                ^
+In file included from ../source/../Headers/Papier.h:10:0,
+                 from ../source/Papier.cpp:1:
+../source/../Headers/document.h:19:2: note: candidate: Document::Document(int, int)
+  Document(int prolon, int data);
+  ^
+../source/../Headers/document.h:19:2: note:   candidate expects 2 arguments, 0 provided
+../source/../Headers/document.h:8:7: note: candidate: Document::Document(const Document&)
+ class Document {
+       ^
+../source/../Headers/document.h:8:7: note:   candidate expects 1 argument, 0 provided
+../source/Papier.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Papier&)’:
+../source/Papier.cpp:24:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+make: *** [source/Papier.o] Error 1
+source/subdir.mk:30: recipe for target 'source/Papier.o' failed
+16:37:44 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+In file included from ../source/../Headers/Papier.h:10:0,
+                 from ../source/Papier.cpp:1:
+../source/../Headers/document.h:35:76: error: virtual functions cannot be friends
+  virtual friend ostream & operator<<(ostream &os, const Document &Document ) ;
+                                                                            ^
+../source/../Headers/document.h:35:76: error: ‘std::ostream& Document::operator<<(std::ostream&, const Document&)’ must take exactly one argument
+../source/Papier.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Papier&)’:
+../source/Papier.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+source/subdir.mk:30: recipe for target 'source/Papier.o' failed
+make: *** [source/Papier.o] Error 1
+16:38:31 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+../source/Papier.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Papier&)’:
+../source/Papier.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/Papier.cpp
+ 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+Finished building: ../source/adherent.cpp
+ 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+Finished building: ../source/bibli.cpp
+ 
+Building file: ../source/document.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/document.d" -MT"source/document.d" -o "source/document.o" "../source/document.cpp"
+Finished building: ../source/document.cpp
+ 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Numeric.o ./source/Papier.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:40:49 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+Finished building: ../source/Numeric.cpp
+ 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+../source/Papier.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Papier&)’:
+../source/Papier.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/Papier.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Numeric.o ./source/Papier.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:46:52 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+Finished building: ../source/Audio.cpp
+ 
+Building file: ../source/Livre.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Livre.d" -MT"source/Livre.d" -o "source/Livre.o" "../source/Livre.cpp"
+Finished building: ../source/Livre.cpp
+ 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+In file included from ../source/../Headers/Numeric.h:10:0,
+                 from ../source/Numeric.cpp:7:
+../source/../Headers/document.h:35:49: error: ‘Papier’ does not name a type
+  friend ostream & operator<<(ostream &os, const Papier &Papier ) = 0;
+                                                 ^
+../source/../Headers/document.h:35:68: error: initializer specified for friend function ‘std::ostream& operator<<(std::ostream&, const int&)’
+  friend ostream & operator<<(ostream &os, const Papier &Papier ) = 0;
+                                                                    ^
+make: *** [source/Numeric.o] Error 1
+source/subdir.mk:42: recipe for target 'source/Numeric.o' failed
+16:47:13 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+In file included from ../source/../Headers/Numeric.h:10:0,
+                 from ../source/Numeric.cpp:7:
+../source/../Headers/document.h:35:57: error: ‘Papier’ does not name a type
+  virtual friend ostream & operator<<(ostream &os, const Papier &Papier ) = 0;
+                                                         ^
+../source/../Headers/document.h:35:76: error: virtual functions cannot be friends
+  virtual friend ostream & operator<<(ostream &os, const Papier &Papier ) = 0;
+                                                                            ^
+../source/../Headers/document.h:35:76: error: ‘std::ostream& Document::operator<<(std::ostream&, const int&)’ must take exactly one argument
+source/subdir.mk:42: recipe for target 'source/Numeric.o' failed
+make: *** [source/Numeric.o] Error 1
+16:47:31 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+In file included from ../source/../Headers/Numeric.h:10:0,
+                 from ../source/Numeric.cpp:7:
+../source/../Headers/document.h:35:80: error: virtual functions cannot be friends
+  virtual friend ostream & operator<<(ostream &os, const Document &Document ) = 0;
+                                                                                ^
+../source/../Headers/document.h:35:80: error: ‘std::ostream& Document::operator<<(std::ostream&, const Document&)’ must take exactly one argument
+source/subdir.mk:42: recipe for target 'source/Numeric.o' failed
+make: *** [source/Numeric.o] Error 1
+16:48:21 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+Finished building: ../source/Numeric.cpp
+ 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+../source/Papier.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Papier&)’:
+../source/Papier.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/Papier.cpp
+ 
+Building file: ../source/Periodique.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Periodique.d" -MT"source/Periodique.d" -o "source/Periodique.o" "../source/Periodique.cpp"
+Finished building: ../source/Periodique.cpp
+ 
+Building file: ../source/Video.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Video.d" -MT"source/Video.d" -o "source/Video.o" "../source/Video.cpp"
+Finished building: ../source/Video.cpp
+ 
+Building file: ../source/adherent.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/adherent.d" -MT"source/adherent.d" -o "source/adherent.o" "../source/adherent.cpp"
+Finished building: ../source/adherent.cpp
+ 
+Building file: ../source/bibli.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/bibli.d" -MT"source/bibli.d" -o "source/bibli.o" "../source/bibli.cpp"
+Finished building: ../source/bibli.cpp
+ 
+Building file: ../source/document.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/document.d" -MT"source/document.d" -o "source/document.o" "../source/document.cpp"
+Finished building: ../source/document.cpp
+ 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:51:56 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+Finished building: ../source/Numeric.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+16:54:47 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+make: Nothing to be done for 'all'.
+16:56:45 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Periodique.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Periodique.d" -MT"source/Periodique.d" -o "source/Periodique.o" "../source/Periodique.cpp"
+../source/Periodique.cpp:1:1: error: ‘Periodique’ does not name a type
+ Periodique::Periodique() : Papier(){
+ ^
+source/subdir.mk:42: recipe for target 'source/Periodique.o' failed
+make: *** [source/Periodique.o] Error 1
+16:57:28 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Periodique.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Periodique.d" -MT"source/Periodique.d" -o "source/Periodique.o" "../source/Periodique.cpp"
+../source/Periodique.cpp:8:33: fatal error: ../Headers/Periodique: No such file or directory
+source/subdir.mk:42: recipe for target 'source/Periodique.o' failed
+compilation terminated.
+make: *** [source/Periodique.o] Error 1
+16:57:54 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Periodique.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Periodique.d" -MT"source/Periodique.d" -o "source/Periodique.o" "../source/Periodique.cpp"
+In file included from ../source/../Headers/Papier.h:10:0,
+                 from ../source/../Headers/Periodique.h:10,
+                 from ../source/Periodique.cpp:8:
+../source/../Headers/document.h: In constructor ‘Periodique::Periodique()’:
+../source/../Headers/document.h:11:13: error: ‘const bool Document::prolongeable’ is private
+  bool const prolongeable;
+             ^
+../source/Periodique.cpp:10:2: error: within this context
+  prolongeable = true;
+  ^
+../source/Periodique.cpp:10:15: error: assignment of read-only member ‘Document::prolongeable’
+  prolongeable = true;
+               ^
+source/subdir.mk:42: recipe for target 'source/Periodique.o' failed
+make: *** [source/Periodique.o] Error 1
+17:02:33 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+../source/Papier.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Papier&)’:
+../source/Papier.cpp:25:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/Papier.cpp
+ 
+Building file: ../source/Periodique.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Periodique.d" -MT"source/Periodique.d" -o "source/Periodique.o" "../source/Periodique.cpp"
+Finished building: ../source/Periodique.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+17:03:09 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+../source/Papier.cpp: In function ‘std::ostream& operator<<(std::ostream&, const Papier&)’:
+../source/Papier.cpp:26:1: error: expected ‘;’ before ‘}’ token
+ }
+ ^
+source/subdir.mk:42: recipe for target 'source/Papier.o' failed
+make: *** [source/Papier.o] Error 1
+17:03:12 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Papier.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Papier.d" -MT"source/Papier.d" -o "source/Papier.o" "../source/Papier.cpp"
+Finished building: ../source/Papier.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+17:05:00 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+Finished building: ../source/Numeric.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+17:06:57 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Livre.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Livre.d" -MT"source/Livre.d" -o "source/Livre.o" "../source/Livre.cpp"
+../source/Livre.cpp:1:19: fatal error: Livre.h: No such file or directory
+compilation terminated.
+source/subdir.mk:42: recipe for target 'source/Livre.o' failed
+make: *** [source/Livre.o] Error 1
+17:07:12 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Livre.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Livre.d" -MT"source/Livre.d" -o "source/Livre.o" "../source/Livre.cpp"
+Finished building: ../source/Livre.cpp
+ 
+Building file: ../source/Numeric.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Numeric.d" -MT"source/Numeric.d" -o "source/Numeric.o" "../source/Numeric.cpp"
+Finished building: ../source/Numeric.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+17:11:47 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+../source/Audio.cpp:8:23: fatal error: ../Headers/: No such file or directory
+compilation terminated.
+make: *** [source/Audio.o] Error 1
+source/subdir.mk:42: recipe for target 'source/Audio.o' failed
+17:12:01 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+../source/Audio.cpp:10:1: error: ‘Audio’ does not name a type
+ Audio Audio::Audio():Numeric(true,23) {
+ ^
+../source/Audio.cpp:13:6: error: ‘Audio’ has not been declared
+ void Audio::Afficher() {
+      ^
+make: *** [source/Audio.o] Error 1
+source/subdir.mk:42: recipe for target 'source/Audio.o' failed
+17:12:17 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+../source/Audio.cpp:8:30: fatal error: ../Headers/Audi0.h: No such file or directory
+source/subdir.mk:42: recipe for target 'source/Audio.o' failed
+compilation terminated.
+make: *** [source/Audio.o] Error 1
+17:12:25 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+In file included from ../source/Audio.cpp:8:0:
+../source/../Headers/Audio.h:10:28: error: expected class-name before ‘{’ token
+ class Audio: public Numeric{
+                            ^
+../source/../Headers/Audio.h:12:14: error: return type specification for constructor invalid
+  Audio Audio();
+              ^
+../source/Audio.cpp:10:20: error: return type specification for constructor invalid
+ Audio Audio::Audio():Numeric(true,23) {
+                    ^
+../source/Audio.cpp: In constructor ‘Audio::Audio()’:
+../source/Audio.cpp:10:22: error: class ‘Audio’ does not have any field named ‘Numeric’
+ Audio Audio::Audio():Numeric(true,23) {
+                      ^
+../source/Audio.cpp: In member function ‘void Audio::Afficher()’:
+../source/Audio.cpp:14:2: error: ‘cout’ was not declared in this scope
+  cout << "HAHAHAH pire programe";
+  ^
+../source/Audio.cpp:14:2: note: suggested alternative:
+In file included from ../source/Audio.cpp:9:0:
+/usr/include/c++/5/iostream:61:18: note:   ‘std::cout’
+   extern ostream cout;  /// Linked to standard output
+                  ^
+source/subdir.mk:42: recipe for target 'source/Audio.o' failed
+make: *** [source/Audio.o] Error 1
+17:13:15 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+In file included from ../source/Audio.cpp:8:0:
+../source/../Headers/Audio.h:10:28: error: expected class-name before ‘{’ token
+ class Audio: public Numeric{
+                            ^
+../source/../Headers/Audio.h:12:14: error: return type specification for constructor invalid
+  Audio Audio();
+              ^
+../source/Audio.cpp:10:20: error: return type specification for constructor invalid
+ Audio Audio::Audio():Numeric(true,23) {
+                    ^
+../source/Audio.cpp: In constructor ‘Audio::Audio()’:
+../source/Audio.cpp:10:22: error: class ‘Audio’ does not have any field named ‘Numeric’
+ Audio Audio::Audio():Numeric(true,23) {
+                      ^
+../source/Audio.cpp: In member function ‘void Audio::Afficher()’:
+../source/Audio.cpp:14:2: error: ‘cout’ was not declared in this scope
+  cout << "HAHAHAH pire programe";
+  ^
+../source/Audio.cpp:14:2: note: suggested alternative:
+In file included from ../source/Audio.cpp:9:0:
+/usr/include/c++/5/iostream:61:18: note:   ‘std::cout’
+   extern ostream cout;  /// Linked to standard output
+                  ^
+make: *** [source/Audio.o] Error 1
+source/subdir.mk:42: recipe for target 'source/Audio.o' failed
+17:13:41 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+In file included from ../source/Audio.cpp:8:0:
+../source/../Headers/Audio.h:13:14: error: return type specification for constructor invalid
+  Audio Audio();
+              ^
+../source/Audio.cpp:10:20: error: return type specification for constructor invalid
+ Audio Audio::Audio():Numeric(true,23) {
+                    ^
+make: *** [source/Audio.o] Error 1
+source/subdir.mk:42: recipe for target 'source/Audio.o' failed
+17:14:07 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Audio.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Audio.d" -MT"source/Audio.d" -o "source/Audio.o" "../source/Audio.cpp"
+Finished building: ../source/Audio.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+17:15:39 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Video.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Video.d" -MT"source/Video.d" -o "source/Video.o" "../source/Video.cpp"
+Finished building: ../source/Video.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+17:31:07 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Video.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Video.d" -MT"source/Video.d" -o "source/Video.o" "../source/Video.cpp"
+Finished building: ../source/Video.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 

@@ -1,0 +1,13 @@
+asBracketColor=\#CFBFAD
+asClassColor=\#87CEFA
+asCommentColor=\#CD8B00
+asFunctionColor=\#87CEFA
+asInterfaceColor=\#87FAC4
+asMetadataColor=\#CFBFAD
+asOperatorColor=\#CFBFAD
+asPackageColor=\#CFBFAD
+asReservedColor=\#808BED
+asStringColor=\#FFCD8B
+asTextColor=\#CFBFAD
+asTraceColor=\#CFBFAD
+eclipse.preferences.version=1

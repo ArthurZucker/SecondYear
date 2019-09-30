@@ -1,0 +1,27 @@
+/*
+ * Numeric.h
+ *
+ *  Created on: 25 sept. 2019
+ *      Author: 3670958
+ */
+
+#ifndef HEADERS_NUMERIC_H_
+#define HEADERS_NUMERIC_H_
+#include "document.h"
+class Papier : public Document{
+private:
+	string auteur,editeur;
+public:
+	Papier();
+	friend ostream & operator<<(ostream &os, const Papier &Papier ) ;
+	const string& getAuteur() const;
+	void setAuteur(const string& auteur);
+	const string& getEditeur() const;
+	void setEditeur(const string& editeur);
+};
+
+
+
+
+
+#endif /* HEADERS_NUMERIC_H_ */

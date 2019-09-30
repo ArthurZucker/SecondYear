@@ -1,0 +1,37 @@
+#include "../Headers/adherent.h"
+
+Adherent::Adherent(string allocator) {
+}
+
+string Adherent::get_nom() {
+}
+
+string Adherent::get_prenom() {
+}
+
+void Adherent::set_nom(string allocator) {
+}
+
+void Adherent::set_prenom(string allocator) {
+}
+
+vector<Document> Adherent::get_doc() {
+}
+
+bool Adherent::emprunter(Document document) {
+}
+
+bool Adherent::emprunter(string allocator) {
+}
+
+bool Adherent::rendre(Document document) {
+}
+
+bool Adherent::rendre(string allocator) {
+}
+
+ostream & Adherent:: operator<<( ostream &os, const Adherent &Adherent)
+ {
+	os << "Nom:" << Adherent.nom << "\nPrenom" << Adherent.prenom << "\n Etc flemme";
+     return ( os ) ;
+ }

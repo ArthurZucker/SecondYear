@@ -1,0 +1,18 @@
+/*
+ * Audio.h
+ *
+ *  Created on: 25 sept. 2019
+ *      Author: 3670958
+ */
+
+#ifndef HEADERS_AUDIO_H_
+#define HEADERS_AUDIO_H_
+class Audio: public Numeric{
+public:
+	Audio Audio();
+};
+
+
+
+
+#endif /* HEADERS_AUDIO_H_ */

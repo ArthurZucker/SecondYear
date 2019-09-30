@@ -1,0 +1,19 @@
+#include "../Headers/bibli.h"
+using namespace std;
+
+
+const vector<Adherent>& bibli::getListAdherents() const {
+	return list_adherents;
+}
+
+
+const vector<Document>& bibli::getListDocuments() const {
+	return list_documents;
+}
+const string& bibli::getNom() const {
+	return nom;
+}
+
+void bibli::setNom(const string& nom) {
+	this->nom = nom;
+}

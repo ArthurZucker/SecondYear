@@ -1,0 +1,10 @@
+!SESSION 2019-09-25 15:39:04.501 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.8.0_212
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  TP1
+Command-line arguments:  -os linux -ws gtk -arch x86_64 TP1
+
+!ENTRY org.eclipse.cdt.core 1 0 2019-09-25 15:40:01.467
+!MESSAGE Indexed 'TP1' (3 sources, 115 headers) in 2,14 sec: 9 520 declarations; 17 026 references; 0 unresolved inclusions; 0 syntax errors; 2 unresolved names (0,0075 %)

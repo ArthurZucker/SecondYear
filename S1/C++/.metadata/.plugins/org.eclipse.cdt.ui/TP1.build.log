@@ -1,0 +1,15 @@
+17:31:07 **** Incremental Build of configuration Debug for project TP1 ****
+make all 
+Building file: ../source/Video.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"source/Video.d" -MT"source/Video.d" -o "source/Video.o" "../source/Video.cpp"
+Finished building: ../source/Video.cpp
+ 
+Building target: TP1
+Invoking: Cross G++ Linker
+g++  -o "TP1"  ./source/Audio.o ./source/Livre.o ./source/Numeric.o ./source/Papier.o ./source/Periodique.o ./source/Video.o ./source/adherent.o ./source/bibli.o ./source/document.o  ./main.o   
+Finished building target: TP1
+ 
+
+17:31:11 Build Finished (took 3s.577ms)
+

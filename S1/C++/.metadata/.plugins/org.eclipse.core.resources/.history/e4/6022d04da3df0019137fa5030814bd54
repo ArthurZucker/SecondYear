@@ -1,0 +1,36 @@
+#ifndef DOCUMENT_H
+#define DOCUMENT_H
+#include <iostream>
+#include <string>
+#include <vector>
+#include <ctime>
+using namespace std;
+class Document {
+private:
+	int const duree_emprunt;
+	bool const prolongeable;
+	static int cpt;
+	string id;
+	string titre;
+	bool est_emprunte;
+	time_t date_emprunt;
+	time_t date_retour;
+public:
+	Document(bool prolon, int data);
+	virtual ~Document(){}
+	static int getCpt();
+	static void setCpt(int cpt2);
+	time_t getDateEmprunt() const;
+	void setDateEmprunt(time_t dateEmprunt);
+	time_t getDateRetour() const;
+	void setDateRetour(time_t dateRetour);
+	const int getDureeEmprunt() const;
+	bool isEstEmprunte() const;
+	void setEstEmprunte(bool estEmprunte);
+	const string& getId() const;
+	void setId(const string& id);
+	const bool isProlongeable() const;
+	const string& getTitre() const;
+	void setTitre(const string& titre);
+};
+#endif
