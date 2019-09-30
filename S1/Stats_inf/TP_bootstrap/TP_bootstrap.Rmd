@@ -65,7 +65,7 @@ mean.bootstrap <- function(x, B)
 ech_boot_mean=mean.bootstrap(x, B=1000)
 ```
 
-# Q.2c)
+### Q.2c)
 ```{r}
 library(boot)
 moyenne <- function(x,i) {return(mean(x[i]))}
@@ -74,24 +74,24 @@ names(bootsample_mean)
 ```
 
 
-# Q.3a)
+### Q.3a)
 ```{r}
 par(mfrow=c(1,2))
 hist(bootsample_mean$t)
 plot(density(bootsample_mean$t))
 ```
 
-# Q.3b)
+### Q.3b)
 
 
-# Q.3c)
+### Q.3c)
 ```{r}
 plot(density(sqrt(n)*(bootsample_mean$t-mean(x))))
 xx= seq(-2,2,by=0.01)
 lines(xx, dnorm(xx,0,sqrt(theta*(1-theta))), col=2)
 ```
 
-#Q.4)
+### Q.4)
 ```{r}
 quantile(bootsample_mean$t, c(0.025,0.975)) 
  
@@ -102,11 +102,33 @@ ICboot_bca <-boot.ci(bootsample_mean,conf=0.95,type="bca")
 ICboot_bca
 ```
 
-#D'apres TCL :
+### D'apres TCL :
 ```{r}
 Binf=mean(x)-1.96*sd(x)/sqrt(n)
 Bsup=mean(x)+1.96*sd(x)/sqrt(n)
 Binf
 Bsup
 ```
+
+# Exerice 3 
+
+### Question 1
+```{r}
+ n = 100
+ set.seed(1)
+ x = rcauchy(n,location = 1)
+ true.mediane = 1
+```
+
+### Question 2
+```{r}
+library(boot)
+bootsample_median=boot(x,function(x,i) {return(median(x[i]))},R=1000)
+par(mfrow=c(1,2))
+hist(bootsample_median$t)
+plot(density(bootsample_median$t))
+```
+
+
+
 
