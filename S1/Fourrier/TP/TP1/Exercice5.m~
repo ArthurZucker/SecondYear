@@ -1,0 +1,14 @@
+f = @(t) 1.*(t<=pi).*(t>0) -1.*(t>-pi).*(t<=0)
+t = linspace(-pi,pi,1000)
+plot(t,f(t))
+fchap =@(k) (1/i*pi.*k).*(1-(-1)^k)
+Sn = []
+n = [1 5 10 50 100]
+for i=1:length(n) % grand N 
+    S = 0;
+    for k=-n(i):n(i)
+        S = S + fchap(k).*exp(i.*k.*t);
+        
+    end
+    Sn(i)=S;
+end
