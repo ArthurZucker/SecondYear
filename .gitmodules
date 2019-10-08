@@ -1,0 +1,3 @@
+[submodule "gym-trainer"]
+	path = gym-trainer
+	url = https://github.com/MarsParallax/gym-trainer.git
