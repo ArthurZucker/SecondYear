@@ -11,7 +11,7 @@ class PassGrid{
   ~PassGrid();
   // Function members
   void print() const;
-  std::string generate(Path);
+  std::string generate(Path & c);
   void reset();
   // Getters
   std::size_t get_height();
@@ -21,6 +21,7 @@ class PassGrid{
   void set_height();
   void set_width();
   void set_case(int,int);
+  void write(std::string);
  private:
   //attributes
   const std::size_t width;
