@@ -13,7 +13,7 @@ PassGrid::PassGrid(std::size_t w, std::size_t h):width(w),height(h){
 			grid[i][j] = (rand()%61) +33;
 		}
 	}
-	
+
 }
 
 //Destructor
@@ -36,11 +36,11 @@ void PassGrid::print() const{
 		{
 			std::cout<<grid[i][ii]<<"|";
 		}
-		
+
 		std::cout<<std::endl;
 	}
 	std::cout<<line << std::endl;
-	
+
 }
 
 void PassGrid::reset(){
@@ -56,14 +56,14 @@ std::string PassGrid::generate(Path P){
 	std::string out = "";
 	int current_x = P.get_origin()[0];
 	int current_y = P.get_origin()[1];
-	for (size_t i = 0; i < P.get_length(); i++)
+	for (int i = 0; i < P.get_length(); i++)
 	{
 		int move = P.get_path(i);
 		std::cout<< grid[current_x][current_y];
 		current_x += P.get_dir(move)[0];
 		current_y += P.get_dir(move)[1];
-		
+
 	}
-	
+
 	return out;
 }

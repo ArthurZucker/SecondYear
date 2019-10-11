@@ -12,5 +12,6 @@ int main()
   pg.print();
   Path c(5,4,5);
   c.print();
+  std::cout<<"\n";
   std::cout<< pg.generate(c) << std::endl;
 }
