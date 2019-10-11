@@ -13,7 +13,7 @@ PassGrid::PassGrid(std::size_t w, std::size_t h):width(w),height(h){
 			grid[i][j] = (rand()%61) +33;
 		}
 	}
-	
+
 }
 
 //Destructor
@@ -42,9 +42,9 @@ void PassGrid::print() const{
 }
 
 void PassGrid::reset(){
-	for (int i = 0; i < width; i++)
+	for (size_t i = 0; i < width; i++)
 	{
-		for (int j = 0; j < height; j++)
+		for (size_t j = 0; j < height; j++)
 		{
 			grid[i][j] = rand()%61+33;
 		}
@@ -57,7 +57,7 @@ std::string PassGrid::generate(Path & P){
 	int current_y = P.get_origin()[1];
 	int l = P.get_length();
 	int move;
-	for (size_t i = 0; i < l; i++)
+	for (int i = 0; i < l; i++)
 	{
 		move = P.get_path(i);
 		out += grid[current_x][current_y];
@@ -74,24 +74,24 @@ void PassGrid::write(std::string file){
 	ff<<"\n<title>Grid view</title>\n";
 	ff<<"<g id='rowGroup'>\n<rect x='65' y='30' width='75' height='"<<height*30<<"' fill='gainsboro'/>\n<rect x='265' y='30' width='75' height='"<<height*30<<"' fill='gainsboro'/>\n";
 	ff<<"\t<text x='"<<30<<"' y='"<<30<<"' font-size='18px' font-weight='bold' fill='crimson'>\n";
-	for (int i = 0; i < height; i++)
+	for (size_t i = 0; i < height; i++)
 	{
 		ff<<"<tspan x='30' dy='1.5em'>"<<i+1<<"</tspan>\n" ;
 		ff<<"<line x1='"<<30*i +30<<"' y1='30' x2='"<<30*i +30<<"' y2='"<<height*30<<"' stroke='#529fca' />\n";
 	}
 	ff<<"</text>\n";
-	for (int i = 0; i < width; i++)
-	{	
+	for (size_t i = 0; i < width; i++)
+	{
 		ff<<"\t<text x='"<<i*100 +100<<"' y='"<<30<<"' font-size='18px' text-anchor='middle'>\n";
-		for (int ii = 0; ii < height; ii++)
+		for (size_t ii = 0; ii < height; ii++)
 		{
 			if(grid[i][ii] == '&' || grid[i][ii] == '\'' || grid[i][ii] == '\"'|| grid[i][ii] == '>'|| grid[i][ii] == '<'){
-				ff<<"\t\t<tspan x='"<<i*100 +100<<"' dy='1.5em'>"<< "&#"<<int(grid[i][ii])<<';' <<"</tspan>\n";					
+				ff<<"\t\t<tspan x='"<<i*100 +100<<"' dy='1.5em'>"<< "&#"<<int(grid[i][ii])<<';' <<"</tspan>\n";
 			}
 			else{
 				ff<<"\t\t<tspan x='"<<i*100 +100<<"' dy='1.5em'>"<< grid[i][ii] <<"</tspan>\n";
 			}
-			
+
 		}
 		ff <<"\t</text>";
 	}

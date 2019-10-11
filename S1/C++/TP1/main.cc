@@ -2,7 +2,8 @@
 #include <ctime>
 #include "passgrid.hh"
 #include "path.hh"
-
+// There are no momory leap, but the heap has a "still reachable" part, which is a BUG
+// from Valgrind and C++ istefl, stated on stackoverflow
 int main(int argc, char **argv)
 {
   std::string file_name = argv[1];
