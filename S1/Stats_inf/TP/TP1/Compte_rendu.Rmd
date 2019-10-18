@@ -13,6 +13,243 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # Exercice 1
+
+Le test de shapiro est un test statistique nous permettant d'accepter ou rejeter l'hypothèse selon laquelle l'echantillon peut être approximé par une loi gaussienne iid. Ainsi on calcul la $p-value$ nous permettant, selon le parametre $\alpha$ que l'on choisi de rejeter ou ne pas rejeter l'hypothèse $H_{0}$
+
 ```{r}
+x=c(3.7,3.4,4.2,3.8,3.9,4,3.5,3.6,4.3,3.3)
+shapiro.test(x)
+```
+
+On a pour $\alpha = 0.05 , p>\alpha$ on ne rejette donc pas l'hypothèse $H_{0}$ et on suppose que par défaut les $X_{i}$ sont gaussiens.
+On effectue maintenant la statistique de test sur l'hyôthèse $H_{0}:= \mu < 4$ : 
+
+```{r}
+t.test(x,mu=4,alternative = 'less')
+```
+
+On peut retrouver le resultat sur l'intervalle de confiance en utilisant la formule suivante, on a le quantile d'ordre $95\%$ parce qu'on prend une loi unilateral et non bi-laterale. 
+
+```{r}
+n=length(x)
+#borne sup IC :
+mean(x)+qt(0.95,n-1)*sd(x)/sqrt(n)
+```
+
+# Exercice 2
+
+## Question 1 
+
+Alternative `=less` est utilisé parce que l'hypothèse $H_{0}:= \sigma<0.25$. Avec a `p-value`on cherche à savoir si on rejette ou pas $H_{0}$. Ici pour $\alpha = 0.05$ on ne rejette pas $H_{0}$ et on suppose par défaut que le médicament n'est pas efficace. (p-value>$\alpha$)
+
+```{r}
+prop.test(13,55,0.25,alternative = "less")
+
+# si test exact :
+binom.test(13,55,0.25,alternative="less")
+```
+
+## Question 2
+
+```{r}
+#courbe puissance à la main
+n=55
+theta1=0.23
+puissance=function(theta1,n)
+{ power=pnorm((-1.65*sqrt(0.25*0.75/n)+0.25-theta1)/sqrt(theta1*(1-theta1)/n))
+ return(power)
+}
+vect_theta1=seq(0, 0.25, by=0.001)
+vect_power_n55=puissance(vect_theta1,n=55)
+vect_power_n3000=puissance(vect_theta1,n=3000)
+plot(vect_theta1,vect_power_n55,type="l")
+lines(vect_theta1,vect_power_n3000,type="l",col=2)
+```
+
+# Exercice 3
+
+## Question 1
+
+Pour calculer une puissance on se met sous $H_1$. Delta est la différence entre les deux hypothèses?
+
+```{r}
+n = 40
+mu = 6.4
+power.t.test(n,0.4,sd = 1.2,type = 'one.sample',alternative = 'one.sided')
+```
+
+## Question 2
+
+Observons le graphe de la puissance :
+
+```{r}
+mu1=seq(6,8 ,by=0.01)
+delta=mu1-6
+toto=power.t.test(n,delta,sd = 1.2,type = 'one.sample',alternative = 'one.sided')
+plot(mu1,toto$power, type='l',main="n=40")
+```
+
+## Question 3 
+
+```{r}
+power.t.test(power=0.9,delta = 0.4,sd = 1.2,type = 'one.sample',alternative = 'one.sided')
+```
+
+# Exercice 4
+
+## Question 1 
+
+```{r}
+n=20
+# échantillon de variables aléatoires de loi uniforme sur [0,1] :
+x = runif(n)
+  
+# fonction de répartition empirique :  
+fn=ecdf(x)
+plot(fn, verticals=TRUE, do.points=FALSE)
+lines(seq(0,1,0.01),punif(seq(0,1,0.01),0,1),col = 2)
+  
+# superposer la fonctin de répartition de la loi  uniforme sur [0,1]
+
+# test de Kolmagorov Smirnov
+ks.test(x,"punif")
 
 ```
+
+
+
+# Exo 5
+
+Les droites d'Henr d'équation suivante : $y = \frac{1}{\sigma}x-\frac{\mu}{\sigma}$.
+
+```{r}
+# simulation des échantillons :
+x= rnorm(50)
+y= rcauchy(50)
+
+# Droites de Henry :
+
+par(mfrow=c(1,2))
+qqnorm(x)
+lines(x,x)
+qqnorm(y)
+lines(y,y)
+
+# test de Kolmagorov Smirnov
+ks.test(y,"pnorm")
+# test de Shapiro :
+shapiro.test(y)
+# un peu de stat descriptive :
+par(mfrow=c(1,2))
+hist(x,prob=TRUE)
+abscisses=seq(min(x)-10,max(x)+10,0.1)
+lines(abscisses,dnorm(abscisses,mean(x),sd(x)),col=2)
+hist(y,prob=TRUE)
+abscisses=seq(min(y)-10,max(y)+10,0.1)
+lines(abscisses,dnorm(abscisses,mean(x),sd(x)),col=2)
+```
+
+
+# Exo 6
+
+## Question 1
+ 
+On effectue des tests de slatezgjfzlfs
+```{r}
+x=c(602,464,483,506,497,544,486,531,496,501)
+y=c(487,489,470,482,494,500,504,537,482,550)
+
+par(mfrow=c(1,2))
+qqnorm(x)
+lines(x,x)
+qqnorm(y)
+lines(y,y)
+# test de Shapiro :
+shapiro.test(x)
+shapiro.test(y)
+var.test(x,y)
+# les variances ne sont pas les mêmes
+t.test(x,y,var.equal = TRUE)
+```
+
+Le rendement moyen des deux fermes est égal. 
+
+## Question 4
+
+On utilise le test de wilcox : 
+
+```{r}
+wilcox.test(x,y)
+```
+
+
+```{r}
+boxplot(x,y)
+```
+
+# Exo 7
+
+D'après le test de shapiro : comme p-value>alpha on ne rejette pas H0.
+Le test, var.test nous dit qu'on garde l'hypothèse comme quoi ils ont la même variance, mais ici comme ils sont appariés, on utilise la différence.
+Le test t.test nous dit aussi qu'on garde l'hypothèse selon laquelle ils ont les même espérances.
+Wilcox nous dit que même en prenant en compte le fait que les XI sont liée (pas indépendantes) au seuil 5% on garde quand même le médicament.
+
+Alternative on étudie pas en bilateral! Ici on regarde si la proba après augmente la capacité
+```{r}
+x=c(750,860,950,830,750,680,720,810,820)
+y=c(850,880,930,860,800,740,760,790,825)
+boxplot(x,y)
+par(mfrow=c(1,2))
+qqnorm(x)
+lines(x,x)
+qqnorm(y)
+lines(y,y)
+# test de Shapiro :
+shapiro.test(x)
+shapiro.test(y)
+# les variances ne sont pas les mêmes
+t.test(x,y,var.equal = TRUE,paired=TRUE,alternative = 'less')
+```
+
+Le traitement efficace au seuil 5% selon le t.test.
+
+# Exo 8
+
+```{r}
+x <- c(1.83,  0.50,  1.62,  2.48, 1.68, 1.88, 1.55,1.2, 0.7)
+y <- c(0.878, 0.647, 0.598, 2.05, 1.06, 1.29, 1.06, 3.14, 1.29)
+boxplot(x,y)
+par(mfrow=c(1,2))
+qqnorm(x)
+lines(x,x)
+qqnorm(y)
+lines(y,y)
+# test de Shapiro :
+shapiro.test(x)
+shapiro.test(y)
+# les variances ne sont pas les mêmes
+wilcox.test(x,y,paired=TRUE, alternative = 'greater')
+```
+
+# Exo 9
+```{r}
+presence=c(4,18,10)
+absence=c(36,52,80)
+tab=rbind(presence, absence)
+colnames(tab)=c('zone1','zone2','zone3')
+rownames(tab)=c('presence','absence')
+chisq.test(tab)
+
+```
+
+# Exo 10
+
+```{r}
+interoge=c(40,40)
+gueris=c(15,9)
+tab2=rbind(interoge, gueris)
+colnames(tab2)=c(' b',' a ')
+rownames(tab2)=c('interroge','gueris')
+chisq.test(tab2)
+```
+

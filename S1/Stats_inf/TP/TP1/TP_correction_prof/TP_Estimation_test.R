@@ -51,10 +51,10 @@ power.t.test(...)
 
 
 #courbe puissance avec la fonction power.t.test :
-mu1=seq(?,? ,by=0.01)
+mu1=seq(6,8,by=0.01)
 delta=mu1-6
 toto=power.t.test(...)
-plot(mu1,toto$power, type='l',main="n=40")u=seq(6,8,by=0.01)
+plot(mu1,toto$power, type='l',main="n=40")
 
 
 # n tel que puissance soit au moins de 90%
