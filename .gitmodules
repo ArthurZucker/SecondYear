@@ -1,6 +1,9 @@
 [submodule "gym-trainer"]
-	path = gym-trainer
-	url = https://github.com/MarsParallax/gym-trainer.git
-[submodule "S1/C++/TP/S1/C++/TP/TP1"]
-	path = S1/C++/TP/S1/C++/TP/TP1
-	url = https://epudx.polytech.upmc.fr/git/cpp-tp1-3670958/
+        path = gym-trainer
+        url = https://github.com/MarsParallax/gym-trainer.git
+[submodule "S1/C++/TP/TP2"]
+        path = S1/C++/TP/TP2
+        url = https://epudx.polytech.upmc.fr/git/cpp-tp2-3670958/
+[submodule "S1/C++/TP/TP1"]
+        path = S1/C++/TP/TP1
+        url = https://epudx.polytech.upmc.fr/git/cpp-tp1-3670958/

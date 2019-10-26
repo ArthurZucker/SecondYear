@@ -1,4 +1,3 @@
-
 --_______________________________________-----
 ---- Initialisation
 PRAGMA foreign_keys = ON;
@@ -36,7 +35,7 @@ select count(*) from citerne ;
 --8. (b) (MAX) Quelle est la plus grande contenance de citerne disponible ?
 SELECT MAX(citerne.Contenance) from citerne ;
 --9. Quelle est la contenance moyenne des citernes pour chaque caserne ?
-SELECT AVG(citerne.Contenance),Nom_rue,Num_rue,Nom_ville,CP FROM citerne inner join caserne WHERE citerne.Id_Caserne == caserne.Id_Caserne GROUP BY citerne.Id_Caserne;
+SELECT AVG(citerne.Contenance),Nom_rue,Num_rue,Nom_ville,CP FROM citerne inner join caserne on citerne.Id_Caserne == caserne.Id_Caserne GROUP BY citerne.Id_Caserne;
 --10. Combien de casernes protegent chaque ville ?
 select count(*), Nom_ville from protege group by Nom_ville;
 --11. Quelles sont les casernes qui cumulent des contenances de citerne de plus de 2000 L ?
@@ -46,9 +45,13 @@ select * from pompier where pompier.Nom LIKE 'M%';
 --_______________________________________-----
 ---- Suite
 --1. Quel est le nombre de casernes ?
+select count(*) from Caserne;
 --2. Quels sont les pompiers des casernes situees a Draguignan ?
+select pompier.nom,pompier.prenom from pompier inner join Caserne WHERE Caserne.Nom_ville=="Draguignan";
 --3. Quelles sont les casernes protegeant a la fois Draguignan et Le Luc ?
+select * from protege as A , protege as B where A.Id_Caserne==B.Id_Caserne and A.Nom_ville=="Draguignan" and B.Nom_ville=="Le Luc";
 --4. Quels sont les pompiers de la caserne 3 habitant a plus de 5 kilometres d'une caserne ?
+select * from pompier inner join caserne on pompier.Id_Caserne==caserne.Id_Caserne==3 
 --5. Quels sont les pompiers habitant Le Luc ou des villes  20000 habitants ?
 --6. Quel est le delai moyen de livraison pour chaque fabricant de citernes de moins de 1000 litres ?
 --(attention, comme indique ci-dessus, le champ Delai de la table Fabricant est deja une valeur
