@@ -14,43 +14,43 @@ PRAGMA foreign_keys = ON;
 -- DELETE FROM Camion WHERE modele=="truite"; Puisque caserne est réferencée ailleurs
 --_______________________________________-----
 ---- Requetes de selection
---1. Donnez la liste de toutes les villes de la base.
+.print --1. Donnez la liste de toutes les villes de la base.
 select distinct Nom_ville from Adresse;
---2. Donnez le prenom et le nom de chaque pompier.
+.print --2. Donnez le prenom et le nom de chaque pompier.
 select nom, prenom from Pompier;
---3. Quelles sont les casernes qui se situent dans la ville Shadok ?
+.print --3. Quelles sont les casernes qui se situent dans la ville Shadok ?
 select * from Caserne as C  where C.Nom_ville== "Shadok";
---4. Quelles sont les villes protegees par la caserne 1 ?
+.print --4. Quelles sont les villes protegees par la caserne 1 ?
 select Nom_ville from Protege as C where C.Id_caserne==1;
---5. Donnez la liste des villes classees de la plus peuplee a la moins peuplee. (on ne cherchera
---   pas a regrouper les populations des villes apparaissant plusieurs fois)
+.print --5. Donnez la liste des villes classees de la plus peuplee a la moins peuplee. (on ne cherchera
+.print --   pas a regrouper les populations des villes apparaissant plusieurs fois)
 select Nom_ville, Nb_hab from Ville order by Nb_hab desc;
---6. Quel est le modele et le nombre de places des citernes ? (Rappel : une citerne est un
---	 camion qui a la particularite d'^etre une citerne, et certains camions n'en sont pas).
+.print --6. Quel est le modele et le nombre de places des citernes ? (Rappel : une citerne est un
+.print --	 camion qui a la particularite d'^etre une citerne, et certains camions n'en sont pas).
 select Modele, Nb_places from citerne inner join Camion on citerne.Id_camion == Camion.Id_camion and citerne.Id_caserne == Camion.Id_caserne order by Nb_places desc;
---7. Quelles sont les adresses des casernes qui protegent "Draguignan" ?
+.print --7. Quelles sont les adresses des casernes qui protegent "Draguignan" ?
 select * from Caserne inner join protege on caserne.Id_caserne == protege.Id_caserne and protege.Nom_ville == "Draguignan";
---8. (a) (COUNT) Combien y a-t-il de camions citernes dans la base ?
-select count(*) from citerne ;
---8. (b) (MAX) Quelle est la plus grande contenance de citerne disponible ?
-SELECT MAX(citerne.Contenance) from citerne ;
---9. Quelle est la contenance moyenne des citernes pour chaque caserne ?
-SELECT AVG(citerne.Contenance),Nom_rue,Num_rue,Nom_ville,CP FROM citerne inner join caserne on citerne.Id_Caserne == caserne.Id_Caserne GROUP BY citerne.Id_Caserne;
---10. Combien de casernes protegent chaque ville ?
+.print --8. (a) (COUNT) Combien y a-t-il de camions citernes dans la base ?
+select count(*) as 'nombre de citernes' from Citerne;
+.print --8. (b) (MAX) Quelle est la plus grande contenance de citerne disponible ?
+select MAX(Citerne.Contenance) as 'Contenance maximum' from Citerne;
+.print --9. Quelle est la contenance moyenne des citernes pour chaque caserne ?
+SELECT AVG(citerne.Contenance) FROM citerne GROUP BY citerne.Id_Caserne;
+.print --10. Combien de casernes protegent chaque ville ?
 select count(*), Nom_ville from protege group by Nom_ville;
---11. Quelles sont les casernes qui cumulent des contenances de citerne de plus de 2000 L ?
+.print --11. Quelles sont les casernes qui cumulent des contenances de citerne de plus de 2000 L ?
 select citerne.Id_caserne,SUM(Contenance) contenance_totale from citerne group by citerne.Id_caserne having contenance_totale>2000 order by contenance_totale desc;
---12. Quels sont les pompiers dont le nom commence par un M ?
+.print --12. Quels sont les pompiers dont le nom commence par un M ?
 select * from pompier where pompier.Nom LIKE 'M%';
---_______________________________________-----
----- Suite
---1. Quel est le nombre de casernes ?
+.print --_______________________________________-----
+.print ---- Suite
+.print --1. Quel est le nombre de casernes ?
 select count(*) from Caserne;
---2. Quels sont les pompiers des casernes situees a Draguignan ?
+.print --2. Quels sont les pompiers des casernes situees a Draguignan ?
 select pompier.nom,pompier.prenom from pompier inner join Caserne WHERE Caserne.Nom_ville=="Draguignan";
---3. Quelles sont les casernes protegeant a la fois Draguignan et Le Luc ?
+.print --3. Quelles sont les casernes protegeant a la fois Draguignan et Le Luc ?
 select * from protege as A , protege as B where A.Id_Caserne==B.Id_Caserne and A.Nom_ville=="Draguignan" and B.Nom_ville=="Le Luc";
---4. Quels sont les pompiers de la caserne 3 habitant a plus de 5 kilometres d'une caserne ?
+.print --4. Quels sont les pompiers de la caserne 3 habitant a plus de 5 kilometres d'une caserne ?
 select * from pompier inner join caserne on pompier.Id_Caserne==caserne.Id_Caserne==3 
 --5. Quels sont les pompiers habitant Le Luc ou des villes  20000 habitants ?
 --6. Quel est le delai moyen de livraison pour chaque fabricant de citernes de moins de 1000 litres ?
