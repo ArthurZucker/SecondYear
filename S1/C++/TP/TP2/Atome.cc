@@ -12,10 +12,6 @@ Atom::Atom(const ThreeVal_t at) : name("a_" + std::to_string(id)), val(at)
 {
 	id++;
 }
-Atom::Atom(const ThreeVal_t &at) : name("a_" + std::to_string(id)), val(at)
-{
-	id++;
-}
 Atom &Atom::operator=(const ThreeVal_t other)
 {
 	val = other;

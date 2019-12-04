@@ -1,0 +1,148 @@
+---
+title: "Compte rendu de TP"
+author: "Arthur Zucker"
+date: "11/26/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Nous allons utiliser la base de données ozone vu au TP précedent. 
+
+```{r,eval=TRUE,echo=FALSE,include=FALSE}
+require(ggplot2)
+ozone = read.csv2("ozone.csv")
+head(ozone)
+attach(ozone)
+summary(ozone)
+```
+Les $y$ que nous utiliserons sont les concentration en ozone : `max03`, et nous l'évaluerons en fonction de $x$, la température à midi notée `T12`.
+
+## Question 1 
+
+Représentons un nuage de point de $y$ en fonction de $x$.
+```{r,eval=TRUE,echo=FALSE}
+ggplot(ozone,aes(x=ozone$T12,y=ozone$maxO3)) + geom_point(aes(color = '(T12,MaxO3)')) + ggtitle('Représentation de l\'évolution de la concentration en ozone \nen fonction de la température à midi')
+```
+
+Ici, les donnée sont répartie de manière plutôt linéaire, même si elles sont très espacées. 
+On peut donc utiliser un modèle de régression linéaire que nous allons calculer avec la commande `lm()`.
+
+```{r,eval=TRUE,echo=FALSE,include = FALSE}
+res = lm(maxO3 ~ T12,ozone)
+summary(res)
+```
+```{r,eval=TRUE,echo=FALSE}
+ggplot(ozone,aes(x=ozone$T12,y=ozone$maxO3)) + geom_point(aes(color = '(T12,MaxO3)')) + ggtitle('Représentation de l\'évolution de la concentration en ozone \nen fonction de la température à midi') + geom_smooth(method="lm")
+```
+
+## Question 2
+
+On peut lire l'équation de la droite des moindres carrés sur le summary de `res`. Ici on trouve : $\hat{a} =-27.4196 $ l'ordonée à l'origine, et $\hat{b} = 5.4687$ la pente de la droite de régression.
+
+## Question 3
+
+L'intervalle de confiance pour $a$ peut être extrait en utilisant la fonction `confint()res` :
+
+```{r}
+confint(res)
+```
+
+Cette sortie nous donne l'intervalle : $IC_{a}^{95\%} = [-45.32;-9.51]$ on observe que $0\notin IC$ ce qui nous permet de rejetter l'hypothèse $H_{0}$ selon laquelle $a=0$ avec un risque de se tromper de $5\%$.
+
+Pour b on a  $IC_{a}^{95\%} = [4.6;6.2]$ on observe que $0\notin IC$ ce qui nous permet de rejetter l'hypothèse $H_{0}$ selon laquelle $b=0$ avec un risque de se tromper de $5\%$.
+
+## Question 4
+
+a) Test de student :
+
+On utilise la **t-value** donnée dans le summary de res. On la compare avec le quantile d'ordre $1-\alpha$. Et on en déduit si on accepte ou rejette l'hypothèse. On récupère tout d'abord les p-value. t-value c'est $T_{\text{obs}}$
+
+```{r,eval=TRUE,include=TRUE}
+summary(res)$coefficients[,3]
+```
+Ensuite on calcul la valeur du quantile :
+```{r}
+n = length(maxO3)
+alpha = 0.05
+qt(1-alpha/2,n-2)
+```
+Ici on a |p-value|$<|13.258|$ on en déduit donc que l'on peut rejetter l'hypothèse $H_{0}$ selon laquelle $b=0$ avec un risque de se tromper de $5\%$.
+
+b) IC ou p-value : 
+
+On peut directement utiliser la p-value donnée dans les coefficients. Ici on a 
+
+```{r,eval=TRUE,include=TRUE}
+summary(res)$coefficients[,4]
+```
+Donc pour $\alpha = 0.05$ on rejette $H_{0}$.
+
+c) Test de Fisher :
+
+On utilise le quantile de ficher cette fois ci. On récupère la F-statistic sur le res :
+```{r}
+summary(res)
+qf(1-alpha,1,110)
+```
+
+Ici on a $F = 175.8>3.92$
+
+## Question 5 
+
+Ici on doit faire un test unilatéral. On prend $H_{0} : b=0$ et $H_{1}: b>0$.
+On peut utiliser les p-value donnée précédemment. On sait que si on fait un test unilatéral, la valeur de la p-value est ma valeur du test bilatéral divisée par 2. 
+
+```{r}
+0.5*summary(res)$coefficients[1,4]
+```
+
+On rejette donc $H_{0}$.
+
+## Question 6``
+
+a) Test de student 
+
+Ici on effectue un test bilatéral pour $H_{0}:a = 0$ et  $H_{1} : a \neq 0$.
+La p-value est donnée par le quantile :
+```{r}
+qt(1-alpha/2,n-2)
+summary(res)$coefficients[1,3]
+```
+
+Ici on a $|-3|>1.98$ don con rejette $H_{0}$.
+
+b) Intervalle de confiance
+
+Déjà répondu précédemment 
+
+## Question 7 
+
+a,b,c) On peut faire une prédiction ponctuelle, ou une prédiction avec intervalle de confiance. 
+L'espérence de $y_{19}$ prend un modèle parfait, sans bruits. L'IC de $y_{19}$ sera plus grand que l'IC de $E(y_{19})$.
+On utilise les valeurs de $\hat{a}$ et $\hat{b}$ pour prédire "à la main" la valeur de $y_{19}$.
+
+$E(y_{19}) = a +19b$ et $y_{19} = a+19*b +\epsilon$
+
+d,e) On rentre les commandes proposées
+
+```{r}
+predict19esp<-predict(res,newdata = data.frame(T12=19),interval = "confidence")
+predict19e<-predict(res,newdata = data.frame(T12=19),interval = "prediction") # Avec bruit
+```
+
+```{r,eval=TRUE,echo=FALSE}
+seq.T12 = seq(10,40,by=0.01)
+predict19eps<-predict(res,newdata = data.frame(T12=seq.T12),interval = "prediction")
+predict19<-predict(res,newdata = data.frame(T12=seq.T12),interval = "confidence")
+da = data.frame(seq.T12,predict19)
+da2 = data.frame(seq.T12,predict19eps)
+ggplot(ozone,aes(x=ozone$T12,y=ozone$maxO3)) + geom_point(aes(color = '(T12,MaxO3)')) + ggtitle('Représentation de l\'évolution de la concentration en ozone \nen fonction de la température à midi') + geom_smooth(method="lm") +geom_line(data = da,aes(x=seq.T12,y=predict19[,2])) +geom_line(data = da2,aes(x=seq.T12,y=predict19eps[,2]),col=3)+geom_line(data = da,aes(x=seq.T12,y=predict19[,3])) +geom_line(data = da2,aes(x=seq.T12,y=predict19eps[,3]),col=3)
+```
+
+
+

@@ -1,0 +1,87 @@
+---
+title: "TP2_Exercice4"
+author: "Arthur Zucker"
+date: "11/8/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+```
+# Introduction 
+
+# Question 1 
+
+Nous allons établir une statistique descriptive sur les données ozone.
+
+```{r}
+data <- read.csv2("./ozone.csv")
+data
+```
+
+# Question 2 & 3 & 4
+
+```{r}
+dim(data)
+head(data)
+attach(data)
+summary(data)
+```
+
+# Question 5 
+
+```{r}
+par(mfrow=c(2,2))
+ggplot(data, aes(vent,pluie)) + geom_bin2d()
+plot(pluie,vent)
+pie(table(vent))
+pie(table(pluie))
+plot(vent,pluie)
+```
+
+# Question 6 
+
+```{r}
+boxplot(T9,T12,T15)
+boxplot(Ne9,Ne12,Ne15)
+boxplot(Vx9,Vx12,Vx15)
+#ggplot(data, aes(x = c(rep("a",length(Ne9)),rep("a",length(Ne9)),rep("a",length(Ne9))),y = c(Ne9,Ne12,Ne15))) + geom_boxplot()
+```
+
+```{r}
+hist(maxO3)
+hist(maxO3v)
+boxplot(maxO3,maxO3v)
+qqnorm(maxO3)
+```
+
+```{r}
+pairs(data)
+```
+
+```{r}
+table(vent,pluie)
+chisq.test(vent,pluie)
+fisher.test(vent,pluie)
+```
+
+```{r}
+plot(pluie,maxO3)
+shapiro.test(maxO3) #Donnée gausiennes
+var.test(maxO3[pluie=="Sec"],maxO3[pluie=="Pluie"])
+t.test(maxO3 ~pluie ,var.equal = TRUE,alternative = "less")
+```
+
+```{r}
+plot(vent,maxO3)
+shapiro.test(maxO3[vent == "Ouest"]) #Donnée gausiennes
+kruskal.test(maxO3 ~vent)
+```
+```{r}
+ggplot(data,aes(maxO3v,maxO3)) + geom_point() +geom_smooth(method = "lm",se=TRUE) 
+cor(maxO3v,maxO3,method = "kendall")
+cor.test(maxO3v,maxO3,method = "kendall")
+```
+
+

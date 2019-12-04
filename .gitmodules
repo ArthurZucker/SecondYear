@@ -7,3 +7,9 @@
 [submodule "S1/C++/TP/TP1"]
         path = S1/C++/TP/TP1
         url = https://epudx.polytech.upmc.fr/git/cpp-tp1-3670958/
+[submodule "S1/C++/TP/TP3/cpp-tp3-3670958"]
+	path = S1/C++/TP/TP3/cpp-tp3-3670958
+	url = https://epudx.polytech.upmc.fr/git/cpp-tp3-3670958/
+[submodule "S1/S1/C++/TP/TP4"]
+	path = S1/S1/C++/TP/TP4
+	url = https://epudx.polytech.upmc.fr/git/cpp-tp4-3670958

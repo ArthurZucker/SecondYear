@@ -1,0 +1,7 @@
+O-N-O + H-O-H + O-N-O + O-N-O > N=O + H-N-O=O-O + H-N-O=O-O
+Na-O-H + O-N-O-N-O + Na-O-H > H-O-H + O-Na=N-O + O-Na=N-O
+Li + Li + O=O + Li + Li > Li=Li-O + Li=Li-O
+O=O + O=O + O=O + H-H-C=C-H-O-O-H-C=C-H-H-O-O-H-H-C=C-H-H-O-O-H-H + O=O O=O + O=O > O-C-O + H-O-H + O-C-O + H-O-H + O-C-O + H-O-H + O-C-O + H-O-H + O-C-O + H-O-H + O-C-O + H-O-H
+
+
+

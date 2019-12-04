@@ -15,14 +15,3 @@ std::ostream & operator<<(std::ostream &os, ThreeVal_t val)
 	}
 	return os;
 }
-bool is_in(int *tab,const int size, const int to_find)
-{
-	for (size_t i = 0; i < size; i++)
-	{
-		if (tab[i] == to_find)
-		{
-			return true;
-		}
-	}
-	return false;
-}
