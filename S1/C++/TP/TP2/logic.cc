@@ -6,7 +6,7 @@
 #include "ExpOr.hh"
 
 using namespace std;
-void testAtom(){
+/*void testAtom(){
   Atom a(T);
   Atom b;
   Atom c(b);
@@ -76,13 +76,13 @@ void testOperations()
 	  }
     }
   cout << or2.toString() << endl;
-}
+}*/
 
 int main()
 {
-  testAtom();
-  testExpNot();
-  testExpOrExpAnd();
-  testOperations();
+  string file("/Users/arthur/Travail/Polytech/MAIN4/S1/C++/TP/TP2/test.dimacs");
+  CNF exp(file);
+  std::cout<<"Finale result"<<exp.toString()<<std::endl;
+  return 0;
 }
 

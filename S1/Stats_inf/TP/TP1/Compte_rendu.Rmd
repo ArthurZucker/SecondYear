@@ -245,7 +245,7 @@ chisq.test(tab)
 # Exo 10
 
 ```{r}
-interoge=c(40,40)
+interoge=c(25,31)
 gueris=c(15,9)
 tab2=rbind(interoge, gueris)
 colnames(tab2)=c(' b',' a ')
@@ -253,3 +253,4 @@ rownames(tab2)=c('interroge','gueris')
 chisq.test(tab2)
 ```
 
+Les tests sont indépendants : donc ils font pareil

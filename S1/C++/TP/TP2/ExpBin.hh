@@ -7,10 +7,9 @@ protected:
 	ExpLog &op1;
 	ExpLog &op2;
 public:
-	ExpBin(ExpLog &op, ExpLog &op1);
-	~ExpBin();
-	virtual std::string toString() const  = 0;
-  	virtual ThreeVal_t evaluate()const = 0;
+	ExpBin(ExpLog &op,ExpLog &op1);
+	virtual ~ExpBin();
+	virtual std::string toString() 	const = 0;
+  	virtual ThreeVal_t 	evaluate()	const = 0;
 };
-
 #endif

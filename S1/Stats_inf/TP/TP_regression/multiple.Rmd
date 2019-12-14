@@ -1,0 +1,193 @@
+---
+title: "Regression multiple"
+author: "Arthur Zucker"
+date: "11/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Nous allons utiliser la base de données ozone vu au TP précedent. 
+
+```{r,eval=TRUE,echo=FALSE,include=TRUE}
+require(ggplot2)
+data=read.table("moutarde.txt",header=TRUE)
+attach(data)
+summary(data)
+```
+
+```{r}
+res = lm(RC ~ .,data)
+summary(res)
+anova(res)
+```
+
+## Question 2 
+
+Mise sous forme matricielle du problème : 
+
+Vérification des contraintes de colinearité. 
+
+```{r}
+library(car)
+vif(res)
+```
+
+Pas d'homoscédasticité
+
+```{r}
+par(mfrow=c(2,2))
+plot(res)
+```
+
+```{r}
+res = lm(log(RC) ~ .,data)
+par(mfrow=c(2,2))
+plot(res)
+shapiro.test(res$residuals)
+```
+
+HO résidus gaussien, H1 pas gaussiens , on garde H0! Ils semblent gaussiens 
+
+## Question 6 
+
+Formule de $\hat{\theta} = ...$
+
+Or on peut lire les $\hat{\theta}$ sur la colonne `estimate` dans le retour de la commande suivante :
+```{r}
+summary(res)
+```
+On obtien les $\beta_{k}$.
+
+## Question 7 
+
+a) Modèle associé aux hypothèses :
+
+Sous $H{0}$ on a : $Y_{i} = \mu + \epsilon_{i}$
+Sous $H{1}$ on a : $Y_{i} = \mu + \beta_{1} X_{1i} + \beta_{2} X_{2i}+ \beta_{3} X_{3i}+ \beta_{4} X_{4i}+ \beta_{5} X_{5i} +\epsilon_{i}$
+
+b) Modèle sous $H_{0}$
+
+Y = X_0teta0 $+\epsilon$
+
+DIM M0 = 1
+Ychap M0 = XO theta chap 0 
+
+or theta chapeau0 = mu chapeau = moyenne = Y barre
+
+SCR = || Y - Ychap|| 
+
+c) Modèle sous $H_{1}$
+
+Mise sous forme matricielles 
+
+$Y = X\theta +\epsilon$ avec $X=$ $\theta = $
+
+Dim = rang(X) = 6 (colonnes indépendantes vérifiée avec le vif)
+
+$(\hat{Y_{M1}})_{i} =(X\hat{\theta})_{i}= \mu + \beta_{1} X_{1i} + \beta_{2} X_{2i}+ \beta_{3} X_{3i}+ \beta_{4} X_{4i}+ \beta_{5} X_{5i} +\epsilon_{i}$
+
+$SCR =\sum(Y_{i} -(\beta_{1} X_{1i} + \beta_{2} X_{2i}+ \beta_{3} X_{3i}+ \beta_{4} X_{4i}+ \beta_{5} X_{5i} +\epsilon_{i}))^2 $
+
+
+d) test 5%
+
+Student ou fisher? 
+Plusieurs donc fisher (pleins de paramètres nuls à la fois)
+Stat de test dans le cours, voir dans R ou on l'obtient (Fstatistique)
+
+Stat: somme des carré résiduels etc 
+
+Fstatistique : 50.54 on 5                    et 25        pvalue = 10^-12 < 5%
+                F obs   dim(M1)-dim(MO)      n - dim(M1)
+Au moins une des variables explicatives est significatives
+
+## Question8 
+
+On effectue le test de `student`
+
+H0 : B1   = 0 ?
+H1 : B1  != 0
+
+On cherche T qui suit une student, on regarde ensuite les variables qui sont significatives 
+
+Tout est donné dans summary de res. Colonne p-value pour chacune des variable, regarder ou la p-value est < 5%. 
+Pour LT (p-value), pas rejet de H0, LT semble non significative (x1 = 0) pour expliquer Y.
+Pour HF et FE on a pareil.
+Mais pour PR et PA on rejette l'hypothèse H0 et on affirme avec un risque 5% que PR et PA sont significatifs pour expliquer Y, les autres ne le sont pas. (semblent pas)
+
+confint(res) plein d'IC 0 dedans?
+
+## Question 9 
+
+PR et PA significative, on veut savoir dans quel sens, si PR augment Y augmente? 
+H0 : B3 = 0 
+H1 : B3 > 0 (estimate est positif donc on le fait dans ce sens là)
+
+T-obs = 4.96 ici. Soit on calcul le quantil, soit on p-value : on divise par 2 la p-value bilatérale (*0.5)
+(colonne des p-value) 
+Ne pas oublier la transformation.
+On affirme que elle influe positivement sur log RC. 
+
+
+
+## Question 10
+
+De m^me sauf que on test si B4<0 car l'estimate est négatif
+
+## Question 11
+
+Dans le res = lm(log(RH) ~ PR+LT,data) et on étudie la stats comme dans les questions précédentes. 
+
+```{r}
+res4 = lm(log(RC) ~ PR+LT,data) 
+anova(res4,res)
+```
+
+Interprétation : preves pour accepter le gros modèle? Si oui alors on le garde mais sinon on le garde pas
+
+A mettre sous forme matricielle 
+$H_{0} : (\hat{Y_{M1}})_{i} =(X\hat{\theta})_{i}= \mu + \beta_{1} X_{1i} + \beta_{3} X_{3i}  +\epsilon_{i}$ dim =3
+
+$H_{1} : (\hat{Y_{M1}})_{i} =(X\hat{\theta})_{i}= \mu + \beta_{1} X_{1i} + \beta_{2} X_{2i}+ \beta_{3} X_{3i}+ \beta_{4} X_{4i}+ \beta_{5} X_{5i}  +\epsilon_{i}$ dim = 6 
+
+On utilise la stat de Fisher
+
+On rejette H0 à risque de se tromper 5%! 
+
+
+## Question 12 
+
+```{r}
+res4 = lm(log(RC) ~ PR+PA,data) 
+anova(res4,res)
+```
+
+On ne rejette pas H0 et on dit que cela semble suffisant comme modèle 
+
+
+# Exercice d'entrainement 
+
+Charger Ozone, on va l'explique en fonction de toutes les variables quantitatives 
+
+On retire pluie et vent qui sont qualitatives pas quantitatives 
+
+```{r}
+ozone2 = ozone[,-c(1,13,14)]
+```
+
+
+
+
+
+
+
+
+
+
+
+

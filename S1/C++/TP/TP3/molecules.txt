@@ -1,0 +1,14 @@
+O-N-O
+O-Na=N-O
+Li=Li-O
+O=O
+H-C-H-H-C-H-H-O-H
+S-F-F-F-F-F-F
+O-Sn-O
+O-Nb-O-Nb
+H-O-H
+O-C-O
+O-O=O-O-H-O-O=O-O-Fe-O-O=O-O-H-Fe=Fe-O-Na-O-O=O-O-Na-O-O=O-O-O-O=O-O-O-O=O-O-Si-O-O=O-O-O-O=O-O-O-O=O-O-O-O=O-O
+
+
+

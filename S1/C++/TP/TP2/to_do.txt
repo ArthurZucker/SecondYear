@@ -1,0 +1,3 @@
+add constructors with three_val in order to simplify (ref or no ref)
+add what is needed (operators?????) for q 7
+Operators = for explog

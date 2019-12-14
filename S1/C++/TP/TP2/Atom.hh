@@ -2,25 +2,26 @@
 #define _ATOM_HH__
 #include "ExpLog.hh"
 #include "type.hh"
+#include <string>
 class Atom : public ExpLog
 {
 private:
-	std ::string name;
+	std :: string name;
 	ThreeVal_t val;
 	static int id;
 
 public:
 	//constructors
 	Atom();
-	Atom(Atom &at);
-	Atom(ThreeVal_t at);
-	Atom(ThreeVal_t &at);
+	Atom(Atom const &at);
+	Atom(ThreeVal_t const at);
 	//Destructor
 	~Atom();
+	void destroy(){};
 	//Operators
-	Atom &operator=(Atom &other);
-	Atom &operator=(ThreeVal_t other);
-	Atom &operator=(bool other);
+	Atom &operator=(const Atom &other);
+	Atom &operator=(const ThreeVal_t other);
+	Atom &operator=(const bool other);
 	//member functions
 	inline ThreeVal_t evaluate() const { return val; }
 	std::string toString() const;

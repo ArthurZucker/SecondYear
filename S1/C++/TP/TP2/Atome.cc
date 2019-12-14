@@ -4,19 +4,15 @@ Atom::Atom() : name("a_" + std::to_string(id)), val(U)
 {
 	id++;
 }
-Atom::Atom(Atom &at) : name("a_" + std::to_string(id)), val(at.val)
+Atom::Atom(const Atom &at) : name("a_" + std::to_string(id)), val(at.val)
 {
 	id++;
 }
-Atom::Atom(ThreeVal_t at) : name("a_" + std::to_string(id)), val(at)
+Atom::Atom(const ThreeVal_t at) : name("a_" + std::to_string(id)), val(at)
 {
 	id++;
 }
-Atom::Atom(ThreeVal_t &at) : name("a_" + std::to_string(id)), val(at)
-{
-	id++;
-}
-Atom &Atom::operator=(ThreeVal_t other)
+Atom &Atom::operator=(const ThreeVal_t other)
 {
 	val = other;
 	return *this;
@@ -33,7 +29,7 @@ std::string Atom::toString() const
 	chaine += ")";
 	return chaine;
 }
-Atom &Atom::operator=(bool other)
+Atom &Atom::operator=(const bool other)
 {
 	if (other)
 	{
@@ -45,7 +41,7 @@ Atom &Atom::operator=(bool other)
 	}
 	return *this;
 }
-Atom &Atom::operator=(Atom &other)
+Atom &Atom::operator=(const Atom &other)
 {
 	val = other.val;
 	return *this;

@@ -1,10 +1,10 @@
 #include "catch.hpp"
 #include <iostream>
-#include "type.hh"
-#include "Atom.hh"
-#include "ExpNot.hh"
-#include "ExpAnd.hh"
-#include "ExpOr.hh"
+#include "../type.hh"
+#include "../Atom.hh"
+#include "../ExpNot.hh"
+#include "../ExpAnd.hh"
+#include "../ExpOr.hh"
 using namespace std;
 bool testAtom()
 {
@@ -13,10 +13,6 @@ bool testAtom()
   Atom c(b);
   b = T;
   if (a.evaluate() != T || b.evaluate() != T || c.evaluate() != U)
-  {
-    return false;
-  }
-  if (a.toString() != "T" || b.toString() != "T" || c.toString() != "U")
   {
     return false;
   }
@@ -34,11 +30,11 @@ bool testExpNot()
   Atom a(T);
   ExpNot n1(a);
   ExpNot n2(n1);
-  if (n1.evaluate != F)
+  if (n1.evaluate() != F)
   {
     return false;
   }
-  if (n2.evaluate != T)
+  if (n2.evaluate() != T)
   {
     return false;
   }
@@ -54,7 +50,7 @@ bool testExpOrExpAnd()
   ExpAnd and1(n1, b);
   ExpAnd and2(c, b);
   ExpOr or1(and1, and2);
-  if (and1.evaluate() != U || and2.evaluate() != F || or1.evaluate() != F)
+  if (and1.evaluate() != F || and2.evaluate() != F || or1.evaluate() != F)
   {
     return false;
   }
@@ -64,15 +60,17 @@ bool testExpOrExpAnd()
 bool testOperations()
 {
   Atom a(U), b(U), c(U);
-  ExpNot nota(a);
-  ExpAnd and1(a, b);
-  ExpAnd and2(nota, c);
-  ExpAnd and3(b, c);
-  ExpOr or1(and1, and2);
-  ExpOr or2(or1, and3);
+  ExpNot nota(a);        //U
+  ExpAnd and1(a, b);     //U and U=U
+  ExpAnd and2(nota, c);  //U and U=U
+  ExpAnd and3(b, c);     //U and U=U
+  ExpOr or1(and1, and2); // U or U = U
+  ExpOr or2(or1, and3);  // U or U = U
 
-  cout << or2.toString() << endl;
-
+  if (or2.evaluate() != U)
+  {
+    return false;
+  }
   while (or2 == U)
   {
     if (a == U)
@@ -91,53 +89,41 @@ bool testOperations()
       continue;
     }
   }
-  cout << or2.toString() << endl;
+  if (or2.evaluate() != T)
+  {
+    return false;
+  }
   return true;
 }
-TEST_CASE("1: Size of the grid", "[grid]")
+TEST_CASE("1: test on atoms", "[Atoms]")
 {
-  PassGrid p0(0, 0);
-  REQUIRE(p0.get_width() == 0);
-  REQUIRE(p0.get_height() == 0);
-  PassGrid p1(10, 8);
-  REQUIRE(p1.get_width() == 10);
-  REQUIRE(p1.get_height() == 8);
+  REQUIRE(testAtom());
 }
 
-TEST_CASE("2: Grid contents", "[grid]")
+TEST_CASE("2: test on ExpNot", "[ExpNot]")
 {
-  PassGrid p0(10, 10);
-  SECTION("All characters are printable character")
-  {
-    REQUIRE(checkCases(p0));
-  }
-
-  SECTION("Two successively generated grid are different")
-  {
-    PassGrid p1(10, 10);
-    REQUIRE(diff(p0, p1));
-  }
-  SECTION("reset make differences")
-  {
-    PassGrid p1(p0);
-    p0.reset();
-    REQUIRE(diff(p0, p1));
-  }
+  REQUIRE(testExpNot());
 }
-TEST_CASE("3: different path", "[path]")
+TEST_CASE("3: test on And & Or", "[ExpBin]")
 {
-  PassGrid p0(10, 10);
-  Path c(10, 10, 10);
-  std::string path1 = p0.generate(c);
-  SECTION("All characters are printable")
+  REQUIRE(testExpOrExpAnd());
+}
+
+TEST_CASE("4: more operations", "[All]")
+{
+
+  SECTION("Evaluate test")
   {
-    REQUIRE(checkCases(path1));
+    REQUIRE(testOperations());
   }
 
-  SECTION("Two successively generated paths are different")
+  SECTION("Threeval test")
   {
-    PassGrid p1(10, 10);
-    std::string path2 = p1.generate(c);
-    REQUIRE(!(path1 == path2));
+    ThreeVal_t t = T;
+    ThreeVal_t t1 = F;
+    ThreeVal_t t2 = U;
+    REQUIRE(t == 'T');
+    REQUIRE(t1 == 'F');
+    REQUIRE(t2 == 'U');
   }
 }
