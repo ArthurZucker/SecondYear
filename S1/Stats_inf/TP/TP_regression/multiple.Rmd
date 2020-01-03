@@ -18,6 +18,7 @@ require(ggplot2)
 data=read.table("moutarde.txt",header=TRUE)
 attach(data)
 summary(data)
+
 ```
 
 ```{r}
@@ -177,7 +178,7 @@ Charger Ozone, on va l'explique en fonction de toutes les variables quantitative
 On retire pluie et vent qui sont qualitatives pas quantitatives 
 
 ```{r}
-ozone2 = ozone[,-c(1,13,14)]
+#ozone2 = ozone[,-c(1,13,14)]
 ```
 
 

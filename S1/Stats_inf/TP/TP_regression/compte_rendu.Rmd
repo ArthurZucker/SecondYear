@@ -42,7 +42,7 @@ ggplot(ozone,aes(x=ozone$T12,y=ozone$maxO3)) + geom_point(aes(color = '(T12,MaxO
 
 ## Question 2
 
-On peut lire l'équation de la droite des moindres carrés sur le summary de `res`. Ici on trouve : $\hat{a} =-27.4196 $ l'ordonée à l'origine, et $\hat{b} = 5.4687$ la pente de la droite de régression.
+On peut lire l'équation de la droite des moindres carrés sur le summary de `res`. Ici on trouve : $ \hat{a} =-27.4196 $ l'ordonée à l'origine, et $\hat{b} = 5.4687$ la pente de la droite de régression.
 
 ## Question 3
 
