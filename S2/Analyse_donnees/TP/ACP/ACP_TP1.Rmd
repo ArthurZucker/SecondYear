@@ -1,0 +1,178 @@
+---
+title: "Compte rendu TP ACP"
+author: "Arthur Zucker"
+date: "1/31/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Analyse descriptive 
+
+## 1. Analyse univariée
+```{r}
+library(FactoMineR)
+data = read.table("notes_ACP.txt")
+summary(data)
+boxplot(data)
+```
+
+L'analyse descriptive univariée des données est la suivante : 
+ - Il y a plus de notes élevée en Français
+ - Les notes de maths sont très variables
+ 
+## 2. Analyse bi-variée 
+
+```{r}
+pairs(data)
+```
+
+Ici on peut observer à vue de nez qu'un éléève bon en physique l'est aussi en mathes, de même pour l'anglais et le français. Celà reste une observation et c'est limité puisque plus on a de variable, plus cette analyse sera compliquée.
+
+
+## 3. Analyse de la corélation et co-variance
+
+```{r}
+cov(data)
+cor(data)
+```
+
+
+
+## 4. Moyenne et variance empirique
+
+Pour calculer les variances empiriques, on utilise 
+
+```{r}
+colMeans(data)
+diag(var(data))
+```
+
+Ou bien : 
+
+```{r}
+apply(data,2,mean)
+apply(data,2,var)
+```
+
+
+# ACP à la main 
+
+## 1. On centre les données
+
+```{r}
+X = scale(data,center=TRUE,scale=FALSE)
+```
+
+## 2. On calcul les vecteurs propres de la matrice de covariance
+
+```{r}
+lambda = eigen(cov(data))
+```
+
+
+### 3.a
+
+```{r}
+tra = sum(diag(cov(data)))
+```
+
+
+### 3.b
+
+
+```{r}
+It = sum(lambda$values)
+```
+
+
+## 4. Affichage de la part d'inertie
+
+```{r}
+lambda$values/It
+```
+
+
+On en déduit que la première et la deuxième valeur propre sont significatives. On prend donc les deux premier vecteurs propres comme axes pour l'ACP. On choisit donc 2 axes.
+
+## 5. On trace le boxplot des parts d'inertie de chaque axe
+
+```{r}
+barplot(lambda$values/It)
+```
+
+
+## 6. On récupère les deux composantes principales
+
+```{r}
+C = X %*% lambda$vectors[,1:2]
+
+```
+
+```{r}
+#############
+# Question 6b :Représentation des individus
+#############
+
+# C : composantes principales
+# Représentation des individus dans le premier plan principale
+plot(C[,1:2],type="n",xlab='PC1',ylab='PC2')
+text(C[,1:2],labels=row.names(data),cex=1.5)
+title(main="Projection sur les 2 premiers axes principaux")
+lines(c(min(C[,1]),max(C[,1])),c(0,0),lty=2)
+lines(c(0,0),c(min(C[,2]),max(C[,2])),lty=2)
+```
+
+
+## 7.La qualité de la représentation 
+
+```{r}
+norm = function(x) {return(sum(x^2))}
+apply(X,1,norm)
+```
+```{r}
+cos2= cbind(C[,1]^2/apply(X,1,norm),C[,2]^2/apply(X,1,norm))
+colnames(cos2) = paste("comp",1:2)
+cos2
+```
+
+## 8.Calcul de la contribution de chaque individus
+
+```{r}
+contr1 = C[,1]^2/(lambda$values[1]*dim(X)[1])
+contr2= C[,2]^2/(lambda$values[2]*dim(X)[1])
+contr = contr1 + contr2
+```
+
+
+```{r}
+
+#############
+# Question 9 :Représentation des variables
+#############
+cercle_correlation=cor(X,C)
+
+a=seq(0,2*pi,length=100)
+plot(cos(a), sin(a), type='l',lty=3,xlab='comp 1', ylab='comp
+2',main="Cercle des corrélations" )
+arrows(0,0,cercle_correlation[,1],cercle_correlation[,2],col=2)
+text(cercle_correlation[,1],cercle_correlation[,2],labels=colnames(data))
+
+```
+
+
+# FactoMineR
+
+
+```{r}
+data = read.csv2("ozone.csv")
+data = data[,c(-1,-13,-14)]
+pca <- PCA(data,scale.unit = FALSE)
+```
+
+```{r}
+pca$ind$cos2
+```
+

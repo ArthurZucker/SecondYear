@@ -13,3 +13,6 @@
 [submodule "S1/S1/C++/TP/TP4"]
 	path = S1/S1/C++/TP/TP4
 	url = https://epudx.polytech.upmc.fr/git/cpp-tp4-3670958
+[submodule "S1/C++/cpp_smoke"]
+	path = S1/C++/cpp_smoke
+	url = https://github.com/MarsParallax/cpp_smoke.git
