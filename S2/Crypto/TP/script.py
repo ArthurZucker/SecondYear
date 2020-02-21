@@ -120,6 +120,7 @@ def sxor(s1,s2):
 print(c.get("/bin/police_hq"))
 print(c.get("/bin/police_hq/ticket/683"))
 text_fileb64 = c.get("/bin/police_hq/ticket/683/attachment/exhibit-A")
+print(text_fileb64)
 text_file = base64.b64decode(text_fileb64)
 plain_pbmb64 = c.get("/bin/police_hq/ticket/683/attachment/exhibit-B")
 plain_pbm = base64.b64decode(plain_pbmb64)
@@ -127,13 +128,20 @@ i = c.get("/bin/police_hq/ticket/683/attachment/i")
 j = c.get("/bin/police_hq/ticket/683/attachment/j")
 
 key = sxor(text_fileb64, plain_pbmb64)
-print(key)
+size = len(key)
+mask0 = "0"*size
+mask1 = "1"*size
+print(text_file.decode())
+print(sxor(key,mask0).encode('utf-8'))
+print(sxor(key,mask1).encode('utf-8'))
+print(sxor(sxor(key,mask0),mask1).encode('utf-8'))
 
+
+"""
 sample =  c.get("/bin/police_hq/ticket/683/attachment/sample")
 
 with open('image.pbm', 'w') as fd:
 	fd.write(sample)
-
 
 print(c.get("/bin/police_hq/ticket/683/attachment/exhibit-A"))
 print(c.get("/bin/police_hq/ticket/683/attachment/exhibit-B"))
@@ -141,6 +149,7 @@ print(c.get("/bin/police_hq/ticket/683/attachment/sample"))
 print(c.get("/bin/police_hq/ticket/683/attachment/indication-0"))
 print(c.get("/bin/police_hq/ticket/683/attachment/indication-1"))
 print(c.get("/bin/police_hq/ticket/683/attachment/indication-2"))
+"""
 
 
 
