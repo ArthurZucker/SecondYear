@@ -3,6 +3,7 @@ from openssl import *
 import json
 import base64
 c = Connection()
+
 #print(c.post("/bin/login",user="guest",password="guest"))
 #print(c.get("/home/"))
 
@@ -15,6 +16,8 @@ IV = c.get("/sbin/monitor-settings")
 log  = c.get("/bin/login/CHAP")
 plaintext = "wilkinsonethan" + "-" + log['challenge']
 response = encrypt(plaintext,"!r3YPa7u#&")
+c.post("/bin/jukebox/disable")
+c.post("/bin/jukebox/stop")
 """
 def get_card(n):
         return c.get("/bin/banks/card-data/{}".format(n))
@@ -64,12 +67,14 @@ print(decrypt_b64(response,K))
 nonce = c.post("/bin/login/stp",username="wilkinsonethan")
 K = "!r3YPa7u#&"+'-'+nonce
 
-test1 = "/bin/login/stp/handshake"
-dict = {'method':'GET','url':test1}
-jdict =json.dumps(dict)
-enc_jdict = encrypt(jdict,K)
-response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
+def start_stp(K):
+    test1 = "/bin/login/stp/handshake"
+    dict = {'method':'GET','url':test1}
+    jdict =json.dumps(dict)
+    enc_jdict = encrypt(jdict,K)
+    response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
 
+start_stp(K)
 print(decrypt_b64(response,K))
 
 text = "Väinö".encode('utf-8')
@@ -119,7 +124,7 @@ jdict =json.dumps(dict)
 enc_jdict = encrypt(jdict,K)
 response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
 action = "/service/hardware/action/DOOR"
-"""
+
 print(decrypt_b64(response,K))
 print(get_stp(K,"/service/hardware/action"))
 print(get_stp(K,"/service/hardware/action/DOOR"))
@@ -129,8 +134,8 @@ try:
         print(get_stp(K,"/bin/police_hq/"))
 except Exception as e:
         decrypt_b64(e.msg,K)
-"""
-print(get_stp(K,"/bin/police_hq"))
+
+print(get_stp(K,"/bin/police_hq/ticket/1832"))
 print(get_stp(K,"/bin/police_hq/ticket/1832/attachment/log"))
 print(get_stp(K,"/bin/police_hq/ticket/1832/attachment/indication-0"))
 print(get_stp(K,"/bin/police_hq/ticket/1832/attachment/indication-1"))

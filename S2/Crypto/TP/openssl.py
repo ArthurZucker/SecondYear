@@ -133,28 +133,18 @@ def sign(plaintext,key):
     f.close()
     args = ['openssl', 'dgst', '-sha256', '-sign',key_file]
 
-    # si le message clair est une chaine unicode, on est obligé de
-    # l'encoder en bytes() pour pouvoir l'envoyer dans le pipeline vers
-    # openssl
     if isinstance(plaintext, str):
         plaintext = plaintext.encode('utf-8')
 
-    # ouvre le pipeline vers openssl. Redirige stdin, stdout et stderr
-    #    affiche la commande invoquée
-    #    print('debug : {0}'.format(' '.join(args)))
     pipeline = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
 
     # envoie plaintext sur le stdin de openssl, récupère stdout et stderr
     stdout, stderr = pipeline.communicate(plaintext)
 
-    # si un message d'erreur est présent sur stderr, on arrête tout
-    # attention, sur stderr on récupère des bytes(), donc on convertit
     error_message = stderr.decode()
     if error_message != '':
         raise OpensslError(error_message)
     os.system("rm -rf "+key_file)
-    # OK, openssl a envoyé le chiffré sur stdout, en base64.
-    # On récupère des bytes, donc on en fait une chaine unicode
     return stdout
 
 def print_certificate(certificat):
@@ -185,6 +175,22 @@ def verify_cert(certificat):
     pipeline = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
     stdout, stderr = pipeline.communicate(certificat)
     return stdout.decode()
+
+def verify_certificate2(trusted, untrusted2):
+    with open("trusted_certificate.pem","w") as f:
+        f.write(trusted)
+    args = ['openssl', 'verify','-trusted','trusted_certificate.pem']
+    if isinstance(untrusted2, str):
+        untrusted2 = untrusted2.encode('utf-8')
+    pipeline = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    stdout, stderr = pipeline.communicate(untrusted2)
+    #os.system("rm -rf trusted_certificate.pem")
+    if stderr.decode() != '':
+        print(stderr.decode())
+        return False
+
+    return True
+
 
 def verify_certificate(trusted, untrusted1,untrusted2):
     with open("trusted_certificate.pem","w") as f:
@@ -231,6 +237,18 @@ def verify_challenge(certificate,signature,challenge):
     os.system("rm -rf public_key.pem signature.bin")
     return True
 
+def verify_signature(certificate,signature,challenge):
+    with open("public_key.pem","w") as f:
+        f.write(get_pub_cert(certificate))
+    with open("signature.bin","wb") as f:
+        f.write(base64.b64decode(signature))
+    args = ['openssl', 'dgst','-sha256','-verify','public_key.pem','-signature','signature.bin']
+    if isinstance(challenge, str):
+        challenge = challenge.encode('utf-8')
+    pipeline = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    stdout, stderr = pipeline.communicate(challenge)
+    os.system("rm -rf public_key.pem signature.bin")
+    return stdout.decode()
 
 def get_bank_name(certificat):
     return get_sub_cert(certificat).split('=')[2].split('OU')[0][1:-2].strip("\"")
@@ -238,44 +256,17 @@ def get_card_nb(certificat):
         return get_sub_cert(certificat).split('CN')[1].split('=')[1].strip(' ').strip('\n')
 
 def decrypt(cyphertext, passphrase, cipher='aes-128-cbc'):
-    """invoke the OpenSSL library (though the openssl executable which must be
-       present on your system) to encrypt content using a symmetric cipher.
-
-       The passphrase is an str object (a unicode string)
-       The plaintext is str() or bytes()
-       The output is bytes()
-
-       # encryption use
-       >>> message = "texte avec caractères accentués"
-       >>> c = encrypt(message, 'foobar')
-
-    """
-    # prépare les arguments à envoyer à openssl
     pass_arg = 'pass:{0}'.format(passphrase)
     args = ['openssl', 'enc',  '-base64','-' + cipher,'-d','-pass', pass_arg,'-pbkdf2',]
-
-    # si le message clair est une chaine unicode, on est obligé de
-    # l'encoder en bytes() pour pouvoir l'envoyer dans le pipeline vers
-    # openssl
     if isinstance(cyphertext, str):
         cyphertext = cyphertext.encode('utf-8')
-
-    # ouvre le pipeline vers openssl. Redirige stdin, stdout et stderr
-    #    affiche la commande invoquée
-    #    print('debug : {0}'.format(' '.join(args)))
     pipeline = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
-
-    # envoie plaintext sur le stdin de openssl, récupère stdout et stderr
     stdout, stderr = pipeline.communicate(cyphertext)
-
-    # si un message d'erreur est présent sur stderr, on arrête tout
-    # attention, sur stderr on récupère des bytes(), donc on convertit
     error_message = stderr.decode()
     if error_message != '':
         raise OpensslError(error_message)
-    # OK, openssl a envoyé le chiffré sur stdout, en base64.
-    # On récupère des bytes, donc on en fait une chaine unicode
     return stdout.decode()
+    
 def decrypt_b64(cyphertext, passphrase, cipher='aes-128-cbc'):
 
     pass_arg = 'pass:{0}'.format(passphrase)
