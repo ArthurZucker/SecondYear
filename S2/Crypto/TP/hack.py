@@ -1,5 +1,6 @@
 from client import *
 from openssl import *
+import numpy as np
 import json
 import base64
 import math
@@ -90,12 +91,102 @@ def generate_prime_number(length=64):
     return p
 
 
+def xgcd(a, b):
+    """return (g, x, y) such that a*x + b*y = g = gcd(a, b)"""
+    x0, x1, y0, y1 = 0, 1, 1, 0
+    while a != 0:
+        (q, a), b = divmod(b, a), a
+        y0, y1 = y1, y0 - q * y1
+        x0, x1 = x1, x0 - q * x1
+    return b, x0, y0
+
+
+
+def modinv(a, b):
+    """return x such that (x * a) % b == 1"""
+    g, x, _ = xgcd(a, b)
+    if g != 1:
+        raise Exception('gcd(a, b) != 1')
+    return x % b
 """
 print(generate_prime_candidate2(a,b))
 print(c.post("/bin/hackademy/exam/prime/range",p = generate_prime_candidate(a,b)))
 print(c.post("/bin/hackademy/ticket/1815/close"))
 """
+"""
+print(c.get("/bin/hackademy/ticket/1813"))
 
+a = int(c.get("/bin/hackademy/ticket/1813/attachment/a"))
+b = int(c.get("/bin/hackademy/ticket/1813/attachment/b"))
+n = int(c.get("/bin/hackademy/ticket/1813/attachment/n"))
+
+# a*X = -b %n
+# X = -b*a^-1 %n
+
+print(xgcd(a,n))
+_,x,y = xgcd(a,n)
+
+X = (x*(-b))%n
+print((a*X + b) %n)
+print(c.post("/bin/hackademy/exam/arith/eq-lin-mod-p",X=X))
+c.get("/bin/hackademy/ticket/1813/close"))
+
+"""
+
+
+def power(a, b, c):
+    x = 1
+    y = a
+
+    while b > 0:
+        if b % 2 == 0:
+            x = (x * y) % c;
+        y = (y * y) % c
+        b = int(b / 2)
+
+    return x % c
+
+print(c.get("/bin/hackademy/ticket/1822"))
+p=int(c.get("/bin/hackademy/ticket/1822/attachment/p"))
+g=int(c.get("/bin/hackademy/ticket/1822/attachment/g"))
+print(g)
+x=30000000000000000000000000000000000000000000000000000
+print(x)
+h=power(g,x,p)
+res=c.post("/bin/hackademy/exam/elgamal/decryption",h=h)
+
+c1=res['ciphertext'][0]
+c2=res['ciphertext'][1]
+m=c2*modinv(power(c1,x,p),p)%p
+# print(m)
+# h=hex(m)
+# print(h)
+size_m = int.bit_length(m)
+i = int("0x"+str(m), base=16)
+kk = m.to_bytes(len(str(m)), byteorder='big')
+print(kk)
+
+
+def primes():
+    yield 2 # 2 est le seul nombre premier PAIR
+    D = {}  # D[n] = 2*p ---> p est le plus petit facteur premier de n
+    q = 3   # nombre (impair) dont on teste la primalité
+    while True:
+        two_p = D.pop(q, None)  # connait-on un nombre premier qui divise q ?
+        if two_p:               # OUI : q n'est pas premier, car p le divise.
+            # assert q % (two_p // 2) == 0
+            x = q + two_p           # Pour maintenir le dictionnaire D, on
+            while x in D:           # cherche le prochain multiple (impair) de
+                x += two_p          # p qui n'a pas de diviseurs inférieurs à
+            D[x] = two_p            # p, et marquer qu'il est divisible par p.
+                                    # astuce : q et p sont impair, donc q+p est
+                                    #     pair. On passe donc directement à
+                                    #     q + 2p.
+        else:                   # NON : q est premier.
+            D[q*q] = 2*q        # q*q est le plus petit nombre composite qui n'a
+                                # pas de facteurs plus petits que q
+            yield q             # Renvoie q
+        q += 2
 
 print(c.get("/bin/hackademy/ticket/1816"))
 a = int(c.get("/bin/hackademy/ticket/1816/attachment/a"))
@@ -103,28 +194,26 @@ b = int(c.get("/bin/hackademy/ticket/1816/attachment/b"))
 indic0 = c.get("/bin/hackademy/ticket/1816/attachment/indication-0")
 indic1 = c.get("/bin/hackademy/ticket/1816/attachment/indication-1")
 print(indic0,indic1)
-print(generate_prime_number())
+
+qp = int(1 + b//(pow(2,64)))
+taille = int.bit_length(qp)
 list_prime = []
-qp = b//(pow(2,64))
-lima = a/qp
-limb = b/qp
-i = 10
-qcourant = 3
-list_prime.append(3)
-while(qcourant < qp and i<60 and qcourant < b):
-    v = generate_prime_number(i)
-    if(v not in list_prime):
-        list_prime.append(v)
-        qcourant*=v
-    else:
-        i=i+2
+qcourant = 1
 
-x=1
-for i in list_prime:
-    x = x*i
-
-
-print(a,"<\n",x,"<\n",b)
-print(x<b)
-print(list_prime)
+for p in primes():
+    limi = (b-a)//qcourant
+    qcourant*=p
+    if(int.bit_length(qcourant)>taille and limi > 2*int.bit_length(b)):
+        break
+    if p > 1e7:
+            break
+    list_prime.append(p)
+lima = a//qcourant
+limb = b//qcourant
+last_prime = generate_prime_candidate2(lima,limb)
+list_prime.append(last_prime)
+print(int.bit_length(qcourant))
+print(int.bit_length(qp))
+print(a<qcourant)
+print(qcourant<b)
 print(c.post("/bin/hackademy/exam/prime/product",p=list_prime))

@@ -20,6 +20,7 @@ def get_stp(K,adess):
         response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
         return(decrypt_b64(response,K))
 
+
 def put_stp(K,adress,message):
     message = base64.b64encode(message).decode()
     dict = {'method':'PUT','url':adress,'data':message}
@@ -28,12 +29,15 @@ def put_stp(K,adress,message):
     response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
     #return(decrypt_b64(response,K))
 
+
 def post_stp(K,adress,args):
         dict = {'method':'POST','url':adress,'args':args}
         jdict =json.dumps(dict)
         enc_jdict = encrypt(jdict,K)
         response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
         return(decrypt_b64(response,K))
+
+
 
 def start_stp(K):
     test1 = "/bin/login/stp/handshake"
@@ -42,8 +46,7 @@ def start_stp(K):
     enc_jdict = encrypt(jdict,K)
     response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
 
-#nonce = c.post("/bin/login/stp",username="wilkinsonethan")
-#K = "!r3YPa7u#&"+'-'+nonce
+
 
 nonce = c.post("/bin/login/stp",username="shane90")
 K = "means"+'-'+nonce
@@ -51,8 +54,7 @@ start_stp(K)
 
 
 
-
-def create_hashed(i=0):
+def create_hashed(K,i=0,username = "shane90"):
     if(i==0):
         os.system("./md5_collider/coll_finder ./md5_collider/prefix2.bin ./md5_collider/output1.bin ./md5_collider/output2.bin")
         os.system("cat ./md5_collider/prefix2.bin ./md5_collider/output1.bin > ./md5_collider/prefix3.bin")
@@ -73,13 +75,13 @@ def create_hashed(i=0):
     with open("./md5_collider/finale4.bin","rb") as f:
         file4 = f.read()
         file4 = file4[:-1]
+    put_stp(K,"/home/{}/file1.bin".format(username),file1)
+    put_stp(K,"/home/{}/file2.bin".format(username),file2)
+    put_stp(K,"/home/{}/file3.bin".format(username),file3)
+    put_stp(K,"/home/{}/file4.bin".format(username),file4)
     return(file1,file2,file3,file4)
-file1,file2,file3,file4 = create_hashed(1)
-put_stp(K,"/home/shane90/file1.bin",file1)
-put_stp(K,"/home/shane90/file2.bin",file2)
-put_stp(K,"/home/shane90/file3.bin",file3)
-put_stp(K,"/home/shane90/file4.bin",file4)
 
+file1,file2,file3,file4 = create_hashed(K,1)
 print(get_stp(K,"/bin/fsck"))
 
 
