@@ -6,7 +6,9 @@ import base64
 import math
 c = Connection()
 
-
+#Astrid
+user1 = "apierce"
+password1 = "THQ9TYIgr("
 #print(c.post("/bin/login",user="guest",password="guest"))
 #print(c.get("/home/"))
 
@@ -14,12 +16,13 @@ c = Connection()
 #cyphe = decrypt(mess, 'ISEC')
 #print(cyphe)
 #print(c.get("/home/guest/NASA.bin"))
-print(c.post("/bin/login",user="wilkinsonethan",password="!r3YPa7u#&"))
+#print(c.post("/bin/login",user="wilkinsonethan",password="!r3YPa7u#&"))
+print(c.post("/bin/login",user=user1,password=password1))
 IV = c.get("/sbin/monitor-settings")
 log  = c.get("/bin/login/CHAP")
-plaintext = "wilkinsonethan" + "-" + log['challenge']
-response = encrypt(plaintext,"!r3YPa7u#&")
-print(c.post("/bin/login/CHAP",user = "wilkinsonethan",response = response))
+plaintext = user1 + "-" + log['challenge']
+response = encrypt(plaintext,password1)
+print(c.post("/bin/login/CHAP",user = user1,response = response))
 print(c.get("/bin/hackademy"))
 c.post("/bin/jukebox/disable")
 c.post("/bin/jukebox/stop")
@@ -70,8 +73,10 @@ def is_prime(n, k=128):
 
 def generate_prime_candidate2(a,b):
     i = a
-    while not is_prime(i):
+    while (not is_prime(i) and i<b):
         i+=1
+    if(not is_prime(i)):
+        raise NameError('No prime found between a and b ')
     return i
 
 
@@ -145,7 +150,7 @@ def power(a, b, c):
         b = int(b / 2)
 
     return x % c
-
+"""
 print(c.get("/bin/hackademy/ticket/1822"))
 p=int(c.get("/bin/hackademy/ticket/1822/attachment/p"))
 g=int(c.get("/bin/hackademy/ticket/1822/attachment/g"))
@@ -165,7 +170,7 @@ size_m = int.bit_length(m)
 i = int("0x"+str(m), base=16)
 kk = m.to_bytes(len(str(m)), byteorder='big')
 print(kk)
-
+"""
 
 def primes():
     yield 2 # 2 est le seul nombre premier PAIR
@@ -188,14 +193,14 @@ def primes():
             yield q             # Renvoie q
         q += 2
 
-print(c.get("/bin/hackademy/ticket/1816"))
-a = int(c.get("/bin/hackademy/ticket/1816/attachment/a"))
-b = int(c.get("/bin/hackademy/ticket/1816/attachment/b"))
-indic0 = c.get("/bin/hackademy/ticket/1816/attachment/indication-0")
-indic1 = c.get("/bin/hackademy/ticket/1816/attachment/indication-1")
+print(c.get("/bin/hackademy/ticket/2015"))
+a = int(c.get("/bin/hackademy/ticket/2015/attachment/a"))
+b = int(c.get("/bin/hackademy/ticket/2015/attachment/b"))
+indic0 = c.get("/bin/hackademy/ticket/2015/attachment/indication-0")
+indic1 = c.get("/bin/hackademy/ticket/2015/attachment/indication-1")
 print(indic0,indic1)
 
-qp = int(1 + b//(pow(2,64)))
+qp = b//(pow(2,64))
 taille = int.bit_length(qp)
 list_prime = []
 qcourant = 1
@@ -203,7 +208,7 @@ qcourant = 1
 for p in primes():
     limi = (b-a)//qcourant
     qcourant*=p
-    if(int.bit_length(qcourant)>taille and limi > 2*int.bit_length(b)):
+    if(qcourant>qp and limi > 10*int.bit_length(b)):
         break
     if p > 1e7:
             break
@@ -211,7 +216,12 @@ for p in primes():
 lima = a//qcourant
 limb = b//qcourant
 last_prime = generate_prime_candidate2(lima,limb)
+while(qcourant*last_prime > b and qcourant*last_prime < a):
+    print("bad prime")
+    last_prime = generate_prime_candidate2(lima,limb)
+qcourant*=last_prime
 list_prime.append(last_prime)
+
 print(int.bit_length(qcourant))
 print(int.bit_length(qp))
 print(a<qcourant)
