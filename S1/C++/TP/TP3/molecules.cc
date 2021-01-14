@@ -19,7 +19,15 @@ std::string Molecule::normalize() const{
     temporary[forme_eclatee[iter]] ++;
   }
   for (auto & x : temporary){
-    res += x.first + std::to_string(x.second);
+    if (x.second > 1)
+    {
+      res += x.first + std::to_string(x.second);
+    }
+    else
+    {
+      res += x.first;
+    }
+    
   }
   return res;
 }
@@ -45,6 +53,7 @@ int main()
 
   std::cout << "*** Exercice 2 ***" << std::endl;
   file.open("reactions.txt");
+  std::ofstream fout2 ("res_normalize.txt") ;
   std::list<Reaction> lesReactions;
   while(std::getline(file,s))
     {
@@ -53,7 +62,7 @@ int main()
     }
   for(const  auto& iter : lesReactions)
    {
-     fout<< iter<< std::endl;
+     fout2<< iter<< std::endl;
    }
 
   file.close();

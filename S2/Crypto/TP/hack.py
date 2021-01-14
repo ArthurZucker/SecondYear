@@ -9,6 +9,9 @@ c = Connection()
 #Astrid
 user1 = "apierce"
 password1 = "THQ9TYIgr("
+
+user1 = "wilkinsonethan"
+password1 = "!r3YPa7u#&"
 #print(c.post("/bin/login",user="guest",password="guest"))
 #print(c.get("/home/"))
 
@@ -26,6 +29,14 @@ print(c.post("/bin/login/CHAP",user = user1,response = response))
 print(c.get("/bin/hackademy"))
 c.post("/bin/jukebox/disable")
 c.post("/bin/jukebox/stop")
+
+print(c.post("/bin/hackademy/ticket/1819/close"))
+print(c.post("/bin/hackademy/ticket/1820/close"))
+print(c.post("/bin/hackademy/ticket/1826/close"))
+print(c.get("/home/wilkinsonethan/INBOX"))
+i = c.get("/home/wilkinsonethan/INBOX/unread")[0]
+print(c.get("/home/wilkinsonethan/INBOX/"+str(i)))
+
 """
 print(c.get("/bin/hackademy/ticket/1813"))
 a = int((c.get("/bin/hackademy/ticket/1813/attachment/a")))
@@ -193,11 +204,12 @@ def primes():
             yield q             # Renvoie q
         q += 2
 
-print(c.get("/bin/hackademy/ticket/2015"))
-a = int(c.get("/bin/hackademy/ticket/2015/attachment/a"))
-b = int(c.get("/bin/hackademy/ticket/2015/attachment/b"))
-indic0 = c.get("/bin/hackademy/ticket/2015/attachment/indication-0")
-indic1 = c.get("/bin/hackademy/ticket/2015/attachment/indication-1")
+"""
+print(c.get("/bin/hackademy/ticket/1816"))
+a = int(c.get("/bin/hackademy/ticket/1816/attachment/a"))
+b = int(c.get("/bin/hackademy/ticket/1816/attachment/b"))
+indic0 = c.get("/bin/hackademy/ticket/1816/attachment/indication-0")
+indic1 = c.get("/bin/hackademy/ticket/1816/attachment/indication-1")
 print(indic0,indic1)
 
 qp = b//(pow(2,64))
@@ -206,24 +218,92 @@ list_prime = []
 qcourant = 1
 
 for p in primes():
-    limi = (b-a)//qcourant
     qcourant*=p
-    if(qcourant>qp and limi > 10*int.bit_length(b)):
-        break
-    if p > 1e7:
-            break
     list_prime.append(p)
+    if(qcourant>qp):
+        break
+    if p > 1e6:
+            break
+
+
+qcourant = 1
+ll = []
+#On prend des grands nombres premiers, dés qu'on a un interval assez grand pour trouver un premier on va le chercher
+for i in  range(int(len(list_prime))-1,0,-1):
+    p = list_prime[i]
+    qcourant*=p
+    limi = (b-a)//qcourant
+    ll.append(p)
+    if(qcourant>qp and limi >  int.bit_length(b)):
+        break
+    if(limi == 0):
+        raise Exception('limite dépassée')
+
+
 lima = a//qcourant
 limb = b//qcourant
-last_prime = generate_prime_candidate2(lima,limb)
-while(qcourant*last_prime > b and qcourant*last_prime < a):
-    print("bad prime")
-    last_prime = generate_prime_candidate2(lima,limb)
+last_prime = generate_prime_candidate2(lima+1,limb)
 qcourant*=last_prime
-list_prime.append(last_prime)
-
-print(int.bit_length(qcourant))
-print(int.bit_length(qp))
+ll.append(last_prime)
+print(last_prime)
 print(a<qcourant)
 print(qcourant<b)
-print(c.post("/bin/hackademy/exam/prime/product",p=list_prime))
+print(ll)
+k = 1
+for i in ll:
+    k*=i
+print(i)
+print(i>a)
+print(i<b)
+print(qcourant == i)
+print(c.post("/bin/hackademy/exam/prime/product",p=ll))
+
+print(c.post("/bin/hackademy/ticket/1816/close"))
+"""
+
+
+
+"""Malleability EL Gamal """
+# p=int(c.get("/bin/hackademy/ticket/1778/attachment/p"))
+# g=int(c.get("/bin/hackademy/ticket/1778/attachment/g"))
+#
+# chiffre=c.get("/bin/hackademy/exam/elgamal/malleability")
+# a=chiffre['ciphertext'][0]
+# b=chiffre['ciphertext'][1]
+# pk=chiffre['PK']#g puissance x mod p avec x secret de bob
+#
+# rep=c.post("/bin/hackademy/exam/elgamal/malleability",a=a,b=2*b%p)#dechiffrer le chiffre (a,2*b)
+# m=rep['m']#2m
+# m=m*modinv(2,p)%p#on divise par deux du coup
+# i = int("0x"+str(m), base=16)
+# kk = m.to_bytes(len(str(m)), byteorder='big')
+# print(kk)
+
+def generate_prime_number(length=2048):
+    p = 4
+    # keep generating while the primality test fail
+    while not is_prime(p, 128):
+        p = generate_prime_candidate(length)
+    return p
+
+""" RSA KEYGEN """
+# e=c.get("/bin/hackademy/ticket/1781/attachment/e")
+# e=int(e)
+#
+# p=generate_prime_number()
+# q=generate_prime_number()
+# phi_n=(p - 1)*(q - 1)
+# while(phi_n<e):
+#     print("la")
+#     p=generate_prime_number()
+#     q=generate_prime_number()
+# n=p*q
+# d=modinv(e,phi_n)
+# print(d<phi_n)
+#
+# rep=c.post("/bin/hackademy/exam/rsa/keygen",n=n)
+# chiffre=rep['ciphertext']
+# m=pow(chiffre,d,n)
+# i = int("0x"+str(m), base=16)
+# kk = m.to_bytes(len(str(m)), byteorder='big')
+# print(kk)

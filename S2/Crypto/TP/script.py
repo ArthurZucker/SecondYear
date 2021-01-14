@@ -3,6 +3,7 @@ from openssl import *
 from hashlib import sha256, md5
 import random
 import base64
+import math
 c = Connection()
 #print(c.post("/bin/login",user="guest",password="guest"))
 #print(c.get("/home/"))
@@ -11,7 +12,14 @@ c = Connection()
 #cyphe = decrypt(mess, 'ISEC')
 #print(cyphe)
 #print(c.get("/home/guest/NASA.bin"))
-print(c.post("/bin/login",user="wilkinsonethan",password="!r3YPa7u#&"))
+user1 = "wilkinsonethan"
+password1 = "!r3YPa7u#&"
+print(c.post("/bin/login",user=user1,password=password1))
+IV = c.get("/sbin/monitor-settings")
+log  = c.get("/bin/login/CHAP")
+plaintext = user1 + "-" + log['challenge']
+response = encrypt(plaintext,password1)
+print(c.post("/bin/login/CHAP",user = user1,response = response))
 #print(c.get("/sbin/monitor-settings"))
 IV = c.get("/sbin/monitor-settings")
 
@@ -47,11 +55,6 @@ IV = c.get("/sbin/monitor-settings")
 #real_message = decrypt(cipher_text,mdp,cipher = cipher)
 #print(decrypt(cipher_text,mdp,cipher = cipher))
 #print(c.post("/bin/sendmail",to=mail,subject="Problème de déchiffrement (méthode inhabituelle)",content=real_message))
-log  = c.get("/bin/login/CHAP")
-plaintext = "wilkinsonethan" + "-" + log['challenge']
-response = encrypt(plaintext,"!r3YPa7u#&")
-
-print(c.post("/bin/login/CHAP",user = "wilkinsonethan",response = response))
 
 """ message = c.get("/bin/crypto_helpdesk/ticket/517/attachment/message")
 public_key = c.get("/bin/crypto_helpdesk/ticket/517/attachment/public-key")
@@ -158,16 +161,16 @@ for w in words:
             break
     except:
         pass
-"""
-password = "means"
-username = "shane90"
+
+username="shane90"
+password='means'
 log  = c.get("/bin/login/CHAP")
 plaintext = username + "-" + log['challenge']
 response = encrypt(plaintext,password)
 print(c.post("/bin/login/CHAP",user = username,response = response))
-
-bande = 4919
 """
+bande = 4919
+
 def get_stp(K,adess):
         dict = {'method':'GET','url':adess}
         jdict =json.dumps(dict)
@@ -183,9 +186,9 @@ def post_stp(K,adress,args):
         enc_jdict = encrypt(jdict,K)
         response = c.post_raw("/bin/gateway",base64.b64decode(enc_jdict))
         return(decrypt_b64(response,K))
-"""
 
-"""
+
+
 def dh_auten(username):
     k,s = genpkey()
     print(c.post("/bin/key-management/upload-pk",public_key = k,confirm=True))
@@ -217,11 +220,10 @@ def dh_auten(username):
     post_stp(K,adresse,{'signature':signature})
     return K,k,s
 
-K,k,s = dh_auten(username)
-print(get_stp(K,"/bin/banks/drh"))
-print(get_stp(K,"/bin/banks/drh/rules"))
+K,k,s = dh_auten(user1)
+print(get_stp(K,"/bin/hackademy"))
 
-"""
+
 
 ############################################################################################################
 ############################################################################################################
@@ -298,12 +300,13 @@ def dh_auten(username):
     signature = base64.b64encode(signature).decode()
     print(post_stp(adresse,{'signature':signature},K))
     return(K)
-
+"""
 K=dh_auten(username)
 print(get_stp("/bin/banks/drh",K))
 print(get_stp("/bin/banks/drh/rules",K))
 get_stp("/bin/jukebox/disable",K)
 get_stp("/bin/jukebox/stop",K)
+"""
 
 def xgcd(a, b):
     """return (g, x, y) such that a*x + b*y = g = gcd(a, b)"""
@@ -337,6 +340,49 @@ def decrypt_elgamal(h,y,p,a,b):
     coup=(b*modinv(pow(h,y,p),p))%p
     return coup
 
+from random import randrange, getrandbits
+def is_prime(n, k=128):
+    if n == 2 or n == 3:
+        return True
+    if n <= 1 or n % 2 == 0:
+        return False
+    # find r and s
+    s = 0
+    r = n - 1
+    while r & 1 == 0:
+        s += 1
+        r //= 2
+    # do k tests
+    for _ in range(k):
+        a = randrange(2, n - 1)
+        x = pow(a, r, n)
+        if x != 1 and x != n-1:
+            j = 1
+            while j < s and x != n-1:
+                x = pow(x, 2, n)
+                if x == 1:
+                    return False
+                j += 1
+            if x != n - 1:
+                return False
+        return True
+
+def generate_prime_candidate(length):
+    # generate random bits
+    p = getrandbits(length)
+    # apply a mask to set MSB and LSB to 1
+    p |= (1 << length - 1) | 1
+    return p
+
+
+def generate_prime_number(length=1024):
+    p = 4
+    # keep generating while the primality test fail
+    while not is_prime(p, 256):
+        p = generate_prime_candidate(length)
+    return p
+
+
 def debut_match(K):
     p = int('FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1'
         '29024E088A67CC74020BBEA63B139B22514A08798E3404DD'
@@ -346,25 +392,42 @@ def debut_match(K):
         'C2007CB8A163BF0598DA48361C55D39A69163FA8FD24CF5F'
         '83655D23DCA3AD961C62F356208552BB9ED529077096966D'
         '670C354E4ABC9804F1746C08CA237327FFFFFFFFFFFFFFFF', base=16)
-    g = 2
-    h = power(g,int(random.uniform(300000000,5000000000)),p)
-    key_adversaire=json.loads(post_stp("/bin/banks/assistant/start",{'p': p,'g': g,'h':h },K))
+
+
+    test = (p-1)//2
+    while(pow(88275625857605,test,p)==1 or pow(19779480974019653,test,p)==1 or pow(18939445432636760,test,p)==1 ):
+        p = generate_prime_number(2048)
+        test = (p-1)//2
+    g = 4
+    """
+    p=16973503711342477120805274135165619430835938743130314432054926136585928578912660174525970168659915374359727660856827057233817677312192836048898602632666177723528093433540324359025833006067992002566412718794891266025607160515284251482242568317403493898696382741971476164339781911130801156170188729203368675405031096029001040490171163591856775940982483031628912906850898345778957570258953707546194908235407045793360264256745116018346951723960210122845670298475045087367649843749596147556564176481254188618555819016544745578842756258847255193764842219562330491104021390515564019379529467330118170590366570162451975730327
+    #P posssède bien 2048 bit, il est aussi un nombre super
+    y = randrange(3000,20000)
+    q = p-1//2
+    temp = 2
+    print(temp)
+    while(pow(y,temp,p)==1):
+        y = randrange(300,2000000)
+
+    g = pow(y,temp,p)
+    print(g)
+    """
+    h = pow(g,int(random.uniform(300,5000)),p)
+    print(is_prime(g))
+    try:
+        key_adversaire=json.loads(post_stp("/bin/banks/assistant/start",{'p': p,'g': g,'h':h },K))
+    except Exception as e:
+        print(post_stp("/bin/banks/assistant/start",{'p': p,'g': g,'h':h },K))
+    print(key_adversaire)
     return(key_adversaire,g,h,p)
 
 
-
-
-
-
-
-
-
-
-dictionnaire_coup_joue ={"PIERRE":0,"FEUILLE":0,"CISEAUX":0}
 def round(K,g,p,h,key_adversaire):
     dic_coup={"PIERRE":88275625857605,"FEUILLE":19779480974019653,"CISEAUX":18939445432636760}
     dic_coup2={88275625857605:"PIERRE",19779480974019653: "FEUILLE", 18939445432636760:"CISEAUX"}
-    #print(dic_coup2[88275625857605])
+
+    #xgcd(dic_coup["PIERRE"],dic_coup["CISEAUX"]) ne sont pas premiers entre eux!!
+    #(5, 1452445245935753, -6769760686231)
     temp=json.loads(get_stp("/bin/banks/assistant/round",K))
     if(len(temp.keys())==2):
         a_adversaire=temp["a"]
@@ -373,7 +436,6 @@ def round(K,g,p,h,key_adversaire):
     else:
         print(temp["status"])
         waiting = True
-    #coup = input("Entrez votre coup: ")
     temp=random.randint(1,3)
     if(temp==1):
         coup = "PIERRE"
@@ -381,26 +443,31 @@ def round(K,g,p,h,key_adversaire):
         coup = "CISEAUX"
     elif(temp==3):
         coup = "FEUILLE"
-    # coup=input("ENTREZ LE COUP ")
-    coup = "PIERRE"
-    y = int(random.uniform(300,500))%p
-    a = pow(g,y)%p
-    b = dic_coup[coup]*pow(h,y)%p
+    #coup = "FEUILLE" #Match nul h24 avec CISEAUX
+    print(coup)
+    y  = randrange(3,20000)%p
+    a = pow(g,y,p)                          # a= g^y
+    b = (dic_coup[coup]*pow(h,y,p))%p           # b= coup * h^y avec h la clef que j'ai postéen
+    #b//=5                                    # On divise par 5 car pgcPIERRE CISEAUX  =5
+    # Quand je joue CISEAUX il crois que je joue FEUILLE, quand je joue FEUILLE il le sait pareil pour PAPIER
     if(waiting):
-        res=json.loads(post_stp("/bin/banks/assistant/move",{'a':a,'b': b},K))
+        try:
+            res=json.loads(post_stp("/bin/banks/assistant/move",{'a':a,'b': b},K))
+        except Exception  as e:
+            print(post_stp("/bin/banks/assistant/move",{'a':a,'b': b},K))
         a_adversaire=res["a"]
         b_adversaire=res["b"]
         waiting = False
     else:
         res=(post_stp("/bin/banks/assistant/move",{'a':a,'b': b},K))
-    print(post_stp("/bin/banks/assistant/outcome",{'move':"CISEAUX",'y':y},K))
-    temp=json.loads(post_stp("/bin/banks/assistant/outcome",{'move':coup,'y':y},K))
+    try:
+        temp=json.loads(post_stp("/bin/banks/assistant/outcome",{'move':coup,'y':y},K))
+    except Exception  as e:
+        print((post_stp("/bin/banks/assistant/outcome",{'move':coup,'y':y},K)))
+    print(temp)
     print(temp["referee_says"])
     y=temp["y"]
     coup_jouer_adv=temp["move"]
-    dictionnaire_coup_joue[coup_jouer_adv]+=1
-    #print(y)
-
     if(pow(key_adversaire['g'],y,key_adversaire['p'])!=a_adversaire):
         #pass
         print(post_stp("/bin/banks/referee","",K))
@@ -418,13 +485,14 @@ def round(K,g,p,h,key_adversaire):
         return 0
     else:
         return 1
+
 """
 clef,g1,h1,p1= debut_match(K)
 for i in range(0,2000):
     bool=round(K,g1,p1,h1,clef)
     if(bool == 1):
         break
-"""
 
 print(get_stp("/bin/banks",K))
 print(get_stp("/bin/police_hq",K))
+"""

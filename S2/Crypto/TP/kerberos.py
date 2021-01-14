@@ -79,7 +79,9 @@ def kerberos(username,password,vm_name):
         print(get_stp(CSsk,"/courthouse-hack",vm_name))
         print(get_stp(CSsk,"/knowledge-center/courthouse-hack/0",vm_name))
         print(get_stp(CSsk,"/knowledge-center/courthouse-hack/1",vm_name))
-
+        print(get_stp(CSsk,"/knowledge-center/courthouse-hack/2",vm_name))
+        print(get_stp(CSsk,"/knowledge-center/courthouse-hack/3",vm_name))
+        print(get_stp(CSsk,"/knowledge-center/courthouse-hack/4",vm_name))
         #/knowledge-center/ex-programmer/<i>    avec    i = 0,1,2,3
         print("___*100")
         print(get_stp(CSsk,"/failsafe",vm_name))
